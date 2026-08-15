@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cavaquinho - Guia de Estudo</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="page">
+
+  <header class="cover">
+    <div class="staff"><span></span><span></span><span></span><span></span><span></span></div>
+    <div class="eyebrow">Guia de estudo · Cavaquinho · Bandolim · Guitarra</div>
+
+  <nav class="toc">
+    <a href="#afinacao">01 · Introdução</a>
+    <a href="#tons">02 · Tons e semitons</a>
+    <a href="#acorde">03 · Acordes</a>
+    <a href="#formas">04 · Técnica</a>
+    <a href="#construtor">05 · Prática</a>
+    <a href="#recursos">06 · Conteúdo extra</a>
+  </nav>
+
+  <button id="quickNavToggle" class="quick-nav-toggle" type="button" aria-expanded="false" aria-controls="quickNavPanel" aria-label="Abrir índice de secções">☰</button>
+  <div id="quickNavPanel" class="quick-nav-panel" hidden>
+    <div class="quick-nav-pages" role="group" aria-label="Navegação">
+      <a href="index.html" class="quick-nav-page-btn">Página inicial</a>
+      <button type="button" class="quick-nav-page-btn">Cavaquinho</button>
+      <div class="quick-nav-submenu" aria-label="Navegação interna de Cavaquinho">
+        <a href="#afinacao">01 · Introdução</a>
+        <a href="#tons">02 · Tons e semitons</a>
+        <a href="#acorde">03 · Acordes</a>
+        <a href="#formas">04 · Técnica</a>
+        <a href="#construtor">05 · Prática</a>
+        <a href="#recursos">06 · Conteúdo extra</a>
+      </div>
+      <button type="button" class="quick-nav-page-btn">Bandolim</button>
+      <button type="button" class="quick-nav-page-btn">Guitarra</button>
+    </div>
+  </div>
+  <div class="scroll-progress" role="progressbar" aria-label="Progresso de leitura" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+    <div class="scroll-progress-fill" id="scrollProgressFill"></div>
+  </div>
+
+  <section id="afinacao">
+    <p class="kicker">01 · Introdução</p>
+    <h2>O cavaquinho</h2>
+    <div class="cavaquinho-parts-row">
+      <div class="instrument-diagram">
+        <svg viewBox="0 0 220 460" role="img" aria-label="Ilustração do cavaquinho com o braço a mostrar as 12 casas">
+          <rect x="90" y="8" width="40" height="55" rx="14" fill="none" stroke="currentColor" stroke-width="7"/>
+          <circle cx="78" cy="25" r="7" fill="none" stroke="currentColor" stroke-width="5"/>
+          <circle cx="78" cy="46" r="7" fill="none" stroke="currentColor" stroke-width="5"/>
+          <circle cx="142" cy="25" r="7" fill="none" stroke="currentColor" stroke-width="5"/>
+          <circle cx="142" cy="46" r="7" fill="none" stroke="currentColor" stroke-width="5"/>
+          <rect x="98" y="63" width="24" height="128" fill="none" stroke="currentColor" stroke-width="7"/>
+          <line x1="98" y1="73.7" x2="122" y2="73.7" stroke="currentColor" stroke-width="2.5"/>
+          <line x1="98" y1="84.3" x2="122" y2="84.3" stroke="currentColor" stroke-width="2.5"/>
+          <line x1="98" y1="95.0" x2="122" y2="95.0" stroke="currentColor" stroke-width="2.5"/>
+          <line x1="98" y1="105.7" x2="122" y2="105.7" stroke="currentColor" stroke-width="2.5"/>
+          <line x1="98" y1="116.3" x2="122" y2="116.3" stroke="currentColor" stroke-width="2.5"/>
+          <line x1="98" y1="127.0" x2="122" y2="127.0" stroke="currentColor" stroke-width="2.5"/>
+          <line x1="98" y1="137.7" x2="122" y2="137.7" stroke="currentColor" stroke-width="2.5"/>
+          <line x1="98" y1="148.3" x2="122" y2="148.3" stroke="currentColor" stroke-width="2.5"/>
+          <line x1="98" y1="159.0" x2="122" y2="159.0" stroke="currentColor" stroke-width="2.5"/>
+          <line x1="98" y1="169.7" x2="122" y2="169.7" stroke="currentColor" stroke-width="2.5"/>
+          <line x1="98" y1="180.3" x2="122" y2="180.3" stroke="currentColor" stroke-width="2.5"/>
+          <line x1="98" y1="191.0" x2="122" y2="191.0" stroke="currentColor" stroke-width="2.5"/>
+          <path d="M95,191 C60,201 35,211 35,226 C35,251 55,266 68,281 C55,301 15,321 20,351 C20,396 55,431 110,436 C165,431 200,396 200,351 C205,321 165,301 152,281 C165,266 185,251 185,226 C185,211 160,201 125,191 Z" fill="none" stroke="currentColor" stroke-width="7" stroke-linejoin="round"/>
+          <circle cx="110" cy="345" r="24" fill="none" stroke="currentColor" stroke-width="6"/>
+        </svg>
+      </div>
+      <div style="flex:1 1 260px;">
+        <p><strong>A cabeça</strong> é a primeira parte do instrumento, onde estão os <span class="tooltip" tabindex="0" data-tooltip="Carrilhões ou tarraxas são as peças metálicas que giramos para tensionar ou afrouxar as cordas.">carrilhões</span> responsáveis pela afinação das cordas.</p>
+        <p><strong>O braço</strong> é a parte superior do instrumento, possui <strong>entre 12 e 17 <span class="tooltip" tabindex="0" data-tooltip="São os espaços entre dois trastes (barras metálicas) onde pressionamos as cordas para formar um acorde.">casas</span></strong> e é o lugar onde construímos os acordes.</p>
+        <p><strong>O corpo</strong> é a parte inferior, composta pela <strong><span class="tooltip" tabindex="0" data-tooltip="Um corpo oco feito de madeira que serve como amplificador natural do som.">caixa de ressonância</span></strong>, responsável pela sonorização do instrumento.</p>
+      </div>
+    </div>
+    <div class="card" style="margin-top:1.6em;">
+      <p style="margin:0 0 12px;"><strong>Duas notas para se ter em atenção:</strong></p>
+      <ol style="margin:0; padding-left:20px; color:var(--ink-soft); display:flex; flex-direction:column; gap:8px;">
+        <li>diferentemente da <span class="tooltip" tabindex="0" data-tooltip="Guitarra (Portugal), Violão (Brasil).">guitarra</span>, rasgamos as cordas antes da abertura da caixa de ressonância, não em cima da mesma;</li>
+        <li>ter cuidado para não arranhar o corpo com a palheta.</li>
+      </ol>
+    </div>
+    <h2 style="margin-top:1.6em;">Afinação</h2>
+    <p>Pode ter diversas afinações diferentes, mas a que usamos na Quantunna é a <strong style="white-space:nowrap;">Sol - Sol - Si - Ré</strong> <span style="white-space:nowrap;">(G - G - B - D).</span></p>
+    <div class="grid2">
+    <div class="card">
+      <div class="strings-diagram">
+        <svg viewBox="0 0 220 220" role="img" aria-label="Diagrama das 4 cordas soltas do cavaquinho: Sol, Sol, Si, Ré">
+          <line x1="30" y1="18" x2="30" y2="206" stroke="currentColor" stroke-width="2.6" opacity=".85"/>
+          <line x1="76" y1="18" x2="76" y2="206" stroke="currentColor" stroke-width="2.6" opacity=".85"/>
+          <line x1="122" y1="18" x2="122" y2="206" stroke="currentColor" stroke-width="2" opacity=".7"/>
+          <line x1="168" y1="18" x2="168" y2="206" stroke="currentColor" stroke-width="1.5" opacity=".55"/>
+          <line class="string-key" data-freq="196.00" x1="30" y1="18" x2="30" y2="206" stroke="transparent" stroke-width="16"/>
+          <line class="string-key" data-freq="196.00" x1="76" y1="18" x2="76" y2="206" stroke="transparent" stroke-width="16"/>
+          <line class="string-key" data-freq="246.94" x1="122" y1="18" x2="122" y2="206" stroke="transparent" stroke-width="16"/>
+          <line class="string-key" data-freq="146.83" x1="168" y1="18" x2="168" y2="206" stroke="transparent" stroke-width="16"/>
+          <text x="30" y="12" text-anchor="middle" font-size="12" fill="currentColor" font-family="ui-monospace,monospace">Sol</text>
+          <text x="76" y="12" text-anchor="middle" font-size="12" fill="currentColor" font-family="ui-monospace,monospace">Sol</text>
+          <text x="122" y="12" text-anchor="middle" font-size="12" fill="currentColor" font-family="ui-monospace,monospace">Si</text>
+          <text x="168" y="12" text-anchor="middle" font-size="12" fill="currentColor" font-family="ui-monospace,monospace">Ré</text>
+          <circle cx="30" cy="206" r="5" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <circle cx="76" cy="206" r="5" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <circle cx="122" cy="206" r="5" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <circle cx="168" cy="206" r="5" fill="none" stroke="currentColor" stroke-width="1.4"/>
+        </svg>
+      </div>
+      <p class="strum-hint">toca para tocar uma nota</p>
+    </div>
+    <div class="card" id="cavaquinhoCard">
+      <div class="instrument-diagram">
+        <svg viewBox="0 0 220 460" role="img" aria-label="Ilustração do cavaquinho com as 4 cordas Sol, Sol, Si e Ré">
+          <rect x="90" y="8" width="40" height="55" rx="14" fill="none" stroke="currentColor" stroke-width="7"/>
+          <circle cx="78" cy="25" r="7" fill="none" stroke="currentColor" stroke-width="5"/>
+          <circle cx="78" cy="46" r="7" fill="none" stroke="currentColor" stroke-width="5"/>
+          <circle cx="142" cy="25" r="7" fill="none" stroke="currentColor" stroke-width="5"/>
+          <circle cx="142" cy="46" r="7" fill="none" stroke="currentColor" stroke-width="5"/>
+          <rect x="98" y="63" width="24" height="128" fill="none" stroke="currentColor" stroke-width="7"/>
+          <line x1="98" y1="90" x2="122" y2="90" stroke="currentColor" stroke-width="4"/>
+          <line x1="98" y1="112" x2="122" y2="112" stroke="currentColor" stroke-width="4"/>
+          <line x1="98" y1="134" x2="122" y2="134" stroke="currentColor" stroke-width="4"/>
+          <line x1="98" y1="156" x2="122" y2="156" stroke="currentColor" stroke-width="4"/>
+          <line x1="98" y1="178" x2="122" y2="178" stroke="currentColor" stroke-width="4"/>
+          <path d="M95,191 C60,201 35,211 35,226 C35,251 55,266 68,281 C55,301 15,321 20,351 C20,396 55,431 110,436 C165,431 200,396 200,351 C205,321 165,301 152,281 C165,266 185,251 185,226 C185,211 160,201 125,191 Z" fill="none" stroke="currentColor" stroke-width="7" stroke-linejoin="round"/>
+          <circle cx="110" cy="345" r="24" fill="none" stroke="currentColor" stroke-width="6"/>
+          <line x1="101" y1="63" x2="101" y2="390" stroke="var(--wood)" stroke-width="2.6" opacity=".85"/>
+          <line x1="107" y1="63" x2="107" y2="390" stroke="var(--wood)" stroke-width="2.6" opacity=".85"/>
+          <line x1="113" y1="63" x2="113" y2="390" stroke="var(--wood)" stroke-width="2" opacity=".7"/>
+          <line x1="119" y1="63" x2="119" y2="390" stroke="var(--wood)" stroke-width="1.5" opacity=".55"/>
+        </svg>
+      </div>
+      <p class="strum-hint">⇆ arrasta para dedilhar</p>
+    </div>
+    </div>
+    <p style="margin-top:1.6em;">A afinação do cavaquinho altera a forma como os acordes são construídos. Veremos isto mais à frente.</p>
+  </section>
+
+  <section id="tons">
+    <p class="kicker">02 · Teoria</p>
+    <h2>Tons e semitons</h2>
+    <p>Fica mais fácil de perceber este tópico se olharmos para as teclas de um piano.</p>
+    <p>Vejamos abaixo uma <span class="tooltip" tabindex="0" data-tooltip="Uma escala que contém 12 notas, com intervalos de semitons entre elas.">escala cromática</span> qualquer.</p>
+    <div class="card">
+      <div class="piano-diagram">
+        <svg viewBox="0 0 320 184" role="img" aria-label="Teclado de piano com uma oitava, mostrando a escala de Dó maior: Dó, Ré, Mi, Fá, Sol, Lá, Si, Dó">
+          <text x="20" y="9" text-anchor="middle" font-size="7.5" fill="currentColor" opacity=".35" font-family="ui-monospace,monospace">1</text>
+          <text x="40" y="9" text-anchor="middle" font-size="7.5" fill="currentColor" opacity=".35" font-family="ui-monospace,monospace">2</text>
+          <text x="60" y="9" text-anchor="middle" font-size="7.5" fill="currentColor" opacity=".35" font-family="ui-monospace,monospace">3</text>
+          <text x="80" y="9" text-anchor="middle" font-size="7.5" fill="currentColor" opacity=".35" font-family="ui-monospace,monospace">4</text>
+          <text x="100" y="9" text-anchor="middle" font-size="7.5" fill="currentColor" opacity=".35" font-family="ui-monospace,monospace">5</text>
+          <text x="140" y="9" text-anchor="middle" font-size="7.5" fill="currentColor" opacity=".35" font-family="ui-monospace,monospace">6</text>
+          <text x="160" y="9" text-anchor="middle" font-size="7.5" fill="currentColor" opacity=".35" font-family="ui-monospace,monospace">7</text>
+          <text x="180" y="9" text-anchor="middle" font-size="7.5" fill="currentColor" opacity=".35" font-family="ui-monospace,monospace">8</text>
+          <text x="200" y="9" text-anchor="middle" font-size="7.5" fill="currentColor" opacity=".35" font-family="ui-monospace,monospace">9</text>
+          <text x="220" y="9" text-anchor="middle" font-size="7.5" fill="currentColor" opacity=".35" font-family="ui-monospace,monospace">10</text>
+          <text x="240" y="9" text-anchor="middle" font-size="7.5" fill="currentColor" opacity=".35" font-family="ui-monospace,monospace">11</text>
+          <text x="260" y="9" text-anchor="middle" font-size="7.5" fill="currentColor" opacity=".35" font-family="ui-monospace,monospace">12</text>
+          <rect class="piano-key" data-freq="130.81" data-note="Dó3" x="0" y="24" width="40" height="140" fill="var(--paper-raised)" stroke="currentColor" stroke-width="1.5"/>
+          <rect class="piano-key" data-freq="146.83" data-note="Ré3" x="40" y="24" width="40" height="140" fill="var(--paper-raised)" stroke="currentColor" stroke-width="1.5"/>
+          <rect class="piano-key" data-freq="164.81" data-note="Mi3" x="80" y="24" width="40" height="140" fill="var(--paper-raised)" stroke="currentColor" stroke-width="1.5"/>
+          <rect class="piano-key" data-freq="174.61" data-note="Fá3" x="120" y="24" width="40" height="140" fill="var(--paper-raised)" stroke="currentColor" stroke-width="1.5"/>
+          <rect class="piano-key" data-freq="196.00" data-note="Sol3" x="160" y="24" width="40" height="140" fill="var(--paper-raised)" stroke="currentColor" stroke-width="1.5"/>
+          <rect class="piano-key" data-freq="220.00" data-note="Lá3" x="200" y="24" width="40" height="140" fill="var(--paper-raised)" stroke="currentColor" stroke-width="1.5"/>
+          <rect class="piano-key" data-freq="246.94" data-note="Si3" x="240" y="24" width="40" height="140" fill="var(--paper-raised)" stroke="currentColor" stroke-width="1.5"/>
+          <rect class="piano-key" data-freq="261.63" data-note="Dó4" x="280" y="24" width="40" height="140" fill="var(--paper-raised)" stroke="currentColor" stroke-width="1.5"/>
+          <rect class="piano-key" data-freq="138.59" data-note="Dó#3" x="28" y="24" width="24" height="85" fill="currentColor"/>
+          <rect class="piano-key" data-freq="155.56" data-note="Ré#3" x="68" y="24" width="24" height="85" fill="currentColor"/>
+          <rect class="piano-key" data-freq="185.00" data-note="Fá#3" x="148" y="24" width="24" height="85" fill="currentColor"/>
+          <rect class="piano-key" data-freq="207.65" data-note="Sol#3" x="188" y="24" width="24" height="85" fill="currentColor"/>
+          <rect class="piano-key" data-freq="233.08" data-note="Lá#3" x="228" y="24" width="24" height="85" fill="currentColor"/>
+          <text x="40" y="102" text-anchor="middle" font-size="8" fill="var(--paper)" font-family="ui-monospace,monospace">Dó#</text>
+          <text x="80" y="102" text-anchor="middle" font-size="8" fill="var(--paper)" font-family="ui-monospace,monospace">Ré#</text>
+          <text x="160" y="102" text-anchor="middle" font-size="8" fill="var(--paper)" font-family="ui-monospace,monospace">Fá#</text>
+          <text x="200" y="102" text-anchor="middle" font-size="8" fill="var(--paper)" font-family="ui-monospace,monospace">Sol#</text>
+          <text x="240" y="102" text-anchor="middle" font-size="8" fill="var(--paper)" font-family="ui-monospace,monospace">Lá#</text>
+          <text x="20" y="162" text-anchor="middle" font-size="11" fill="currentColor" font-family="ui-monospace,monospace">Dó</text>
+          <text x="60" y="162" text-anchor="middle" font-size="11" fill="currentColor" font-family="ui-monospace,monospace">Ré</text>
+          <text x="100" y="162" text-anchor="middle" font-size="11" fill="currentColor" font-family="ui-monospace,monospace">Mi</text>
+          <text x="140" y="162" text-anchor="middle" font-size="11" fill="currentColor" font-family="ui-monospace,monospace">Fá</text>
+          <text x="180" y="162" text-anchor="middle" font-size="11" fill="currentColor" font-family="ui-monospace,monospace">Sol</text>
+          <text x="220" y="162" text-anchor="middle" font-size="11" fill="currentColor" font-family="ui-monospace,monospace">Lá</text>
+          <text x="260" y="162" text-anchor="middle" font-size="11" fill="currentColor" font-family="ui-monospace,monospace">Si</text>
+          <text x="300" y="162" text-anchor="middle" font-size="11" fill="currentColor" font-family="ui-monospace,monospace">Dó</text>
+        </svg>
+      </div>
+    </div>
+    <p style="margin-top:1.6em; margin-bottom:0;"><strong class="tooltip" tabindex="0" data-tooltip="Pode ser chamado também de meio tom, apesar de &quot;semitom&quot; ser a forma mais usual em teoria musical.">Semitom</strong>: subida ou descida de 1 tecla.</p>
+    <p><strong class="tooltip" tabindex="0" data-tooltip="É formado por 2 semitons consecutivos.">1 tom</strong>: subida ou descida de 2 teclas.</p>
+    <p>Entre as notas <strong>[Mi, Fá]</strong> e <strong>[Si, Dó]</strong> não há <span class="tooltip" tabindex="0" data-tooltip="A diferença entre ambos merece uma nota à parte. Por agora, pensa que são, essencialmente, a mesma coisa.">sustenidos/bemóis</span>. Repara que no teclado acima essas duas notas ficam juntinhas, sem tecla preta entre elas.</p>
+    <div class="card">
+      <p style="margin-top:0;">Selecione uma nota e experimente alterar os botões abaixo.</p>
+      <div class="strip" id="strip"></div>
+      <div class="interval-controls">
+        <button class="mag-btn" data-mag="1">Semitom</button>
+        <button class="mag-btn" data-mag="2">Tom</button>
+        <button class="dir-btn" data-dir="down" aria-label="Descer">−</button>
+        <button class="dir-btn" data-dir="up" aria-label="Subir">+</button>
+        <button type="button" class="reset-interval-btn" id="resetIntervalBtn">Limpar</button>
+      </div>
+      <p class="readout" id="intervalReadout"></p>
+    </div>
+  </section>
+
+  <section id="acorde">
+    <p class="kicker">03 · Teoria</p>
+    <h2>O que é um acorde?</h2>
+    <p style="margin-bottom:0;">Um conjunto de 3 ou mais notas <span class="tooltip" tabindex="0" data-tooltip="Combinando diferentes frequências, criamos harmonia ou dissonância sonora - a depender do que soa bem ao ouvido humano.">tocadas ao mesmo tempo</span>.</p>
+    <p>Podem ser de diferentes tipos: <strong>maior</strong>, <strong>menor</strong>, <strong>diminuto, com sétima, com nona</strong>... Vamos focar apenas nos 2 primeiros.</p>
+    <p style="margin-top:1.6em;">Para montar um acorde, basta fazer uma <strong>matemática simples</strong>. Contamos alguns semitons a partir da nossa 1ª nota. Ou seja, o 1.º grau do nosso acorde.</p>
+    <div class="card">
+      <div class="quality-toggle" style="margin-bottom:16px;">
+        <button id="acordeMajorBtn" class="active">Acorde maior</button>
+        <button id="acordeMinorBtn">Acorde menor</button>
+      </div>
+      <ol class="formula-steps">
+        <li><span class="deg">1.º grau</span><span class="desc">nota do acorde</span></li>
+        <li><span class="deg">3.º grau</span><span class="desc">+<span class="alterable" id="acordeThirdX">4</span> meios tons (3ª <span class="alterable" id="acordeThirdY">maior</span>) acima do 1.º grau</span></li>
+        <li><span class="deg">5.º grau</span><span class="desc">+<span class="alterable" id="acordeFifthX">3</span> meios tons (3ª <span class="alterable" id="acordeFifthY">menor</span>) acima do 3.º grau</span></li>
+      </ol>
+      <p class="formula-example">Exemplo: Acorde <span id="acordeExampleName">Dó maior (C)</span>: <span class="notes" id="acordeExampleNotes">Dó · Mi · Sol</span></p>
+    </div>
+
+    <h2 style="margin-top:1.6em;">Construtor de acordes</h2>
+    <p>Para tornar a nossa vida mais simples, voltamos ao piano para visualizar os acordes.</p>
+    <div class="card">
+      <p style="margin-top:0;">Seleciona o acorde que queres montar.</p>
+      <div class="quality-toggle">
+        <button id="montarMajorBtn">Acorde maior</button>
+        <button id="montarMinorBtn">Acorde menor</button>
+      </div>
+      <div class="root-grid-row" id="montarRootGrid" style="margin-top:16px;"></div>
+    </div>
+    <div class="card">
+      <div class="piano-diagram wide" id="montarPianoWrap"></div>
+    </div>
+  </section>
+
+  <section id="formas">
+    <p class="kicker">04 · Técnica</p>
+    <h2>As 3 formas de tocar cada acorde</h2>
+    <p><strong>Barra</strong>, <strong>Escadinha</strong> e <strong>Pirete</strong>. Na afinação <strong>Sol</strong> - <strong>Sol</strong> - <strong>Si</strong> - <strong>Ré</strong>, é possível construir acordes maiores a partir destas 3 maneiras diferentes de encaixar os dedos. Já, já falaremos dos acordes menores.</p>
+    <div class="technique-grid">
+      <div class="technique">
+        <h4>Barra</h4>
+        <p>Um dedo trava todas as cordas na mesma casa. A cada traste que sobe, sobe meio tom o acorde inteiro.</p>
+        <div class="shape-row">
+          <div class="shape-item"><p class="shape-label">Acorde maior</p><div class="shape-svg" id="shapeBarraMaior"></div></div>
+          <div class="shape-item"><p class="shape-label">Acorde menor</p><div class="shape-svg" id="shapeBarraMenor"></div></div>
+        </div>
+      </div>
+      <div class="technique live">
+        <h4>Escadinha</h4>
+        <p>Dedos colocados em degraus, cada um numa corda e numa casa diferente - daí o nome.</p>
+        <div class="shape-row">
+          <div class="shape-item"><p class="shape-label">Acorde maior</p><div class="shape-svg" id="shapeEscadinhaMaior"></div></div>
+          <div class="shape-item"><p class="shape-label">Acorde menor</p><div class="shape-svg" id="shapeEscadinhaMenor"></div></div>
+        </div>
+      </div>
+      <div class="technique">
+        <h4>Pirete</h4>
+        <p>É fazer um pirete, literalmente. Não tem mistério.</p>
+        <div class="shape-row">
+          <div class="shape-item"><p class="shape-label">Acorde maior</p><div class="shape-svg" id="shapePireteMaior"></div></div>
+          <div class="shape-item"><p class="shape-label">Acorde menor</p><div class="shape-svg" id="shapePireteMenor"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="construtor">
+    <p class="kicker">05 · Prática</p>
+    <h2>Construindo acordes no cavaquinho</h2>
+    <p>Escolha a nota, qualidade e forma para construir o seu acorde no cavaquinho (Sol - Sol - Si - Ré).</p>
+    <div class="card">
+      <div class="builder-controls">
+        <div class="builder-nota">
+          <div class="readout" style="margin-bottom:8px;">Nota</div>
+          <div class="root-grid" id="rootGrid"></div>
+        </div>
+        <div class="builder-qualidade">
+          <div class="readout" style="margin-bottom:8px;">Qualidade</div>
+          <div class="quality-toggle" id="qualidadeToggle">
+            <button id="qMajor">Acorde maior</button>
+            <button id="qMinor">Acorde menor</button>
+          </div>
+        </div>
+        <div class="builder-forma">
+          <div class="readout" style="margin-bottom:8px;">Forma</div>
+          <div class="quality-toggle">
+            <button id="formaBarra">Barra</button>
+            <button id="formaEscadinha">Escadinha</button>
+            <button id="formaPirete">Pirete</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="result-grid">
+        <div class="chord-result-info">
+          <p class="chord-name" id="chordName">Escolhe a nota, qualidade e forma</p>
+          <ol class="formula-steps" id="degreeList"></ol>
+        </div>
+        <div class="chord-result-diagram">
+          <div class="fret-wrap" id="fretWrap"></div>
+          <p class="fret-caption" id="fretCaption"></p>
+        </div>
+      </div>
+      <div class="piano-toggle-row">
+        <span class="piano-toggle-label">Visualizar acorde no piano</span>
+        <button type="button" id="pianoToggleBtn" class="piano-toggle-switch" role="switch" aria-checked="false">
+          <span class="piano-toggle-knob"></span>
+        </button>
+      </div>
+      <div class="piano-toggle-panel" id="pianoTogglePanel" hidden></div>
+    </div>
+  </section>
+
+  <section id="recursos" class="resources">
+    <p class="kicker">06 · Conteúdo extra</p>
+    <h2>Para ir mais longe</h2>
+    <ul class="resource-links">
+      <li><a href="https://www.descomplicandoamusica.com/acorde/" target="_blank" rel="noopener">Descomplicando acordes</a></li>
+      <li><a href="https://www.musicca.com/pt/identificador-de-acordes" target="_blank" rel="noopener">Identificador de acordes</a></li>
+      <li><a href="https://www.musictheory.net/lessons" target="_blank" rel="noopener">Teoria musical</a></li>
+    </ul>
+  </section>
+
+  <footer>Feito por Carolina Mezes - Coimbra, agosto de 2026.<br>Utilizado material de apoio feito por Beatriz Ormonde e Daniel Madeira - Coimbra, Março de 2024</footer>
+</div>
+
+<script src="audio-engine.js"></script>
+<script>
+(function(){
+  var cavaquinhoCard = document.getElementById('cavaquinhoCard');
+  var dragStartX = null;
+  cavaquinhoCard.addEventListener('pointerdown', function(e){
+    dragStartX = e.clientX;
+    if (cavaquinhoCard.setPointerCapture) {
+      try { cavaquinhoCard.setPointerCapture(e.pointerId); } catch(err) {}
+    }
+  });
+  cavaquinhoCard.addEventListener('pointerup', function(e){
+    if (dragStartX === null) return;
+    var deltaX = e.clientX - dragStartX;
+    dragStartX = null;
+    if (Math.abs(deltaX) < 30) { return; }
+    if (deltaX > 0) { playStrum(); } else { playStrumReverse(); }
+  });
+  cavaquinhoCard.addEventListener('pointercancel', function(){ dragStartX = null; });
+
+  document.addEventListener('click', function(e){
+    var key = e.target.closest && e.target.closest('.string-key, .piano-key');
+    if (!key || !key.dataset || !key.dataset.freq) return;
+    playStrumNoteAt(parseFloat(key.dataset.freq), getAudioCtx().currentTime);
+  });
+
+  // ---- Constantes de notas (fonte única) ----
+  var NOTE_DATA = [
+    { name: 'Dó',   freq: 130.81, isSharp: false },
+    { name: 'Dó#',  freq: 138.59, isSharp: true },
+    { name: 'Ré',   freq: 146.83, isSharp: false },
+    { name: 'Ré#',  freq: 155.56, isSharp: true },
+    { name: 'Mi',   freq: 164.81, isSharp: false },
+    { name: 'Fá',   freq: 174.61, isSharp: false },
+    { name: 'Fá#',  freq: 185.00, isSharp: true },
+    { name: 'Sol',  freq: 196.00, isSharp: false },
+    { name: 'Sol#', freq: 207.65, isSharp: true },
+    { name: 'Lá',   freq: 220.00, isSharp: false },
+    { name: 'Lá#',  freq: 233.08, isSharp: true },
+    { name: 'Si',   freq: 246.94, isSharp: false }
+  ];
+  
+  // Derivar as variáveis antigas para compatibilidade
+  var NOTES = NOTE_DATA.map(function(n) { return n.name; });
+  var FREQS = NOTE_DATA.map(function(n) { return n.freq; });
+  var SHARP = NOTE_DATA.map(function(n) { return n.isSharp; });
+
+  function mod12(n){ return ((n % 12) + 12) % 12; }
+  var FRET_MAX = 12; // cavaquinho com 12 trastes
+
+  // ---- Helper para criar grids de botões ----
+  function createButtonGrid(container, items, options) {
+    options = options || {};
+    var baseClass = options.baseClass || 'btn';
+    var getExtraClass = options.getExtraClass || function() { return ''; };
+    var onClick = options.onClick;
+    
+    items.forEach(function(item, i) {
+      var btn = document.createElement('button');
+      btn.className = baseClass + getExtraClass(i, item);
+      btn.textContent = item;
+      if (onClick) btn.addEventListener('click', function() { onClick(i, item); });
+      container.appendChild(btn);
+    });
+  }
+
+  // ---- SVG Builder - Consolidação de lógica de piano ----
+  var SvgBuilder = {
+    buildPianoKeyboard: function(config) {
+      // config = { maxIndex, keyW, keyH, blackW, blackH, degreeOf, labelMap, roleLabel }
+      var keyW = config.keyW || 30;
+      var keyH = config.keyH || 120;
+      var blackW = config.blackW || 17;
+      var blackH = config.blackH || 74;
+      var maxIndex = config.maxIndex || 19;
+      var degreeOf = config.degreeOf || {};
+      var labelMap = config.labelMap || NOTES;
+      var isBlack = config.isBlack || SHARP;
+      var roleLabel = config.roleLabel || 'Piano com as teclas highlighted';
+      
+      var whiteKeys = [];
+      var cursor = 0;
+      for (var i = 0; i <= maxIndex; i++) {
+        if (!isBlack[i % 12]) {
+          whiteKeys.push({ idx: i, x: cursor });
+          cursor += keyW;
+        }
+      }
+      var width = cursor;
+      
+      var blackKeys = [];
+      var cursor2 = 0;
+      for (var j = 0; j <= maxIndex; j++) {
+        if (!isBlack[j % 12]) {
+          cursor2 += keyW;
+        } else {
+          blackKeys.push({ idx: j, x: cursor2 - blackW / 2 });
+        }
+      }
+      
+      var rootKeyX = null;
+      if (config.rootIdx !== null && config.rootIdx !== undefined) {
+        var rootWhite = whiteKeys.filter(function(k) { return k.idx === config.rootIdx; })[0];
+        if (rootWhite) {
+          rootKeyX = rootWhite.x + keyW / 2;
+        } else {
+          var rootBlack = blackKeys.filter(function(k) { return k.idx === config.rootIdx; })[0];
+          if (rootBlack) { rootKeyX = rootBlack.x + blackW / 2; }
+        }
+      }
+      
+      var labelSpace = config.labelSpace || 18;
+      var parts = [];
+      parts.push('<svg viewBox="0 0 ' + width + ' ' + (keyH + labelSpace) + '" role="img" aria-label="' + roleLabel + '">');
+      
+      whiteKeys.forEach(function(k) {
+        var deg = degreeOf[k.idx];
+        var isHighlighted = deg !== undefined;
+        var fill = isHighlighted ? 'var(--wood)' : 'var(--paper-raised)';
+        var freq = config.freqFor ? config.freqFor(k.idx) : 'none';
+        parts.push('<rect class="piano-key" data-freq="' + freq.toFixed(2) + '" x="' + k.x + '" y="0" width="' + keyW + '" height="' + keyH + '" fill="' + fill + '" stroke="currentColor" stroke-width="' + (config.strokeWidth || 1.2) + '"/>');
+        if (deg && deg !== null) {
+          parts.push('<text x="' + (k.x + keyW / 2) + '" y="' + (keyH - 10) + '" text-anchor="middle" font-size="11" fill="var(--paper-raised)" font-family="ui-monospace,monospace">' + deg + '</text>');
+        }
+      });
+      
+      blackKeys.forEach(function(k) {
+        var deg = degreeOf[k.idx];
+        var isHighlighted = deg !== undefined;
+        var fill = isHighlighted ? 'var(--wood)' : 'currentColor';
+        var freq = config.freqFor ? config.freqFor(k.idx) : 'none';
+        parts.push('<rect class="piano-key" data-freq="' + freq.toFixed(2) + '" x="' + k.x + '" y="0" width="' + blackW + '" height="' + blackH + '" fill="' + fill + '"/>');
+        if (deg && deg !== null) {
+          parts.push('<text x="' + (k.x + blackW / 2) + '" y="' + (blackH - 8) + '" text-anchor="middle" font-size="9" fill="var(--paper)" font-family="ui-monospace,monospace">' + deg + '</text>');
+        }
+      });
+      
+      if (rootKeyX !== null) {
+        parts.push('<text x="' + rootKeyX + '" y="' + (keyH + 13) + '" text-anchor="middle" font-size="11" fill="var(--ink-soft)" opacity="0.6" font-family="ui-monospace,monospace">' + labelMap[config.rootIdx] + '</text>');
+      }
+      
+      parts.push('</svg>');
+      return parts.join('');
+    }
+  };
+
+  // ---- acorde maior/menor toggle ----
+  var acordeQuality = 'major';
+  var acordeMajorBtn = document.getElementById('acordeMajorBtn');
+  var acordeMinorBtn = document.getElementById('acordeMinorBtn');
+  var acordeThirdX = document.getElementById('acordeThirdX');
+  var acordeThirdY = document.getElementById('acordeThirdY');
+  var acordeFifthX = document.getElementById('acordeFifthX');
+  var acordeFifthY = document.getElementById('acordeFifthY');
+  var acordeExampleName = document.getElementById('acordeExampleName');
+  var acordeExampleNotes = document.getElementById('acordeExampleNotes');
+  function updateAcordeCard(){
+    var isMajor = acordeQuality === 'major';
+    acordeMajorBtn.classList.toggle('active', isMajor);
+    acordeMinorBtn.classList.toggle('active', !isMajor);
+    acordeThirdX.textContent = isMajor ? 4 : 3;
+    acordeThirdY.textContent = isMajor ? 'maior' : 'menor';
+    acordeFifthX.textContent = isMajor ? 3 : 4;
+    acordeFifthY.textContent = isMajor ? 'menor' : 'maior';
+    acordeExampleName.textContent = isMajor ? 'Dó maior (C)' : 'Dó menor (Cm)';
+    acordeExampleNotes.textContent = isMajor ? 'Dó · Mi · Sol' : 'Dó · Mib · Sol';
+  }
+  acordeMajorBtn.addEventListener('click', function(){
+    acordeQuality = 'major';
+    updateAcordeCard();
+  });
+  acordeMinorBtn.addEventListener('click', function(){
+    acordeQuality = 'minor';
+    updateAcordeCard();
+  });
+
+  // ---- Vamos montar um acorde? ----
+  var MONTAR_LABELS = NOTES;  // Reutilizar de NOTE_DATA
+  var MONTAR_IS_BLACK = SHARP;  // Reutilizar de NOTE_DATA
+  var montarRoot = null;
+  var montarQuality = null;
+
+  var montarRootGrid = document.getElementById('montarRootGrid');
+  createButtonGrid(montarRootGrid, MONTAR_LABELS, {
+    baseClass: 'root-btn',
+    onClick: function(i) {
+      montarRoot = i;
+      Array.prototype.forEach.call(montarRootGrid.children, function(btn, bi) { btn.classList.toggle('active', bi === i); });
+      renderMontarPiano();
+      playMontarChordIfReady();
+    }
+  });
+
+  var montarMajorBtn = document.getElementById('montarMajorBtn');
+  var montarMinorBtn = document.getElementById('montarMinorBtn');
+  montarMajorBtn.addEventListener('click', function(){
+    montarQuality = 'major';
+    montarMajorBtn.classList.add('active');
+    montarMinorBtn.classList.remove('active');
+    renderMontarPiano();
+    playMontarChordIfReady();
+  });
+  montarMinorBtn.addEventListener('click', function(){
+    montarQuality = 'minor';
+    montarMinorBtn.classList.add('active');
+    montarMajorBtn.classList.remove('active');
+    renderMontarPiano();
+    playMontarChordIfReady();
+  });
+
+  function freqForAbsIndex(i){
+    return 130.8127826 * Math.pow(2, i / 12);
+  }
+
+  function montarThirdFifth(root, quality){
+    var third = root + (quality === 'major' ? 4 : 3);
+    var fifth = third + (quality === 'major' ? 3 : 4);
+    return { third: third, fifth: fifth };
+  }
+
+  function playMontarChordIfReady(){
+    if (montarRoot === null) return;
+    if (montarQuality === null) {
+      playStrumNoteAt(freqForAbsIndex(montarRoot), getAudioCtx().currentTime);
+      return;
+    }
+    var tf = montarThirdFifth(montarRoot, montarQuality);
+    var ctx = getAudioCtx();
+    var now = ctx.currentTime;
+    [montarRoot, tf.third, tf.fifth].forEach(function(idx){ playStrumNoteAt(freqForAbsIndex(idx), now); });
+  }
+
+  function buildMontarPianoSvg(root, quality){
+    var degreeOf = {};
+    if (root !== null){
+      degreeOf[root] = '1';
+      if (quality !== null){
+        var tf = montarThirdFifth(root, quality);
+        degreeOf[tf.third] = '3';
+        degreeOf[tf.fifth] = '5';
+      }
+    }
+
+    return SvgBuilder.buildPianoKeyboard({
+      maxIndex: 19,
+      keyW: 30,
+      keyH: 120,
+      blackW: 17,
+      blackH: 74,
+      degreeOf: degreeOf,
+      rootIdx: root,
+      labelMap: MONTAR_LABELS,
+      isBlack: MONTAR_IS_BLACK,
+      freqFor: freqForAbsIndex,
+      strokeWidth: 1.2,
+      roleLabel: 'Piano de duas oitavas com as teclas do acorde selecionado assinaladas'
+    });
+  }
+
+  var montarPianoWrap = document.getElementById('montarPianoWrap');
+  function renderMontarPiano(){
+    montarPianoWrap.innerHTML = buildMontarPianoSvg(montarRoot, montarQuality);
+  }
+  montarPianoWrap.addEventListener('click', function(e){
+    var freq = e.target && e.target.dataset ? e.target.dataset.freq : null;
+    if (freq) { playStrumNoteAt(parseFloat(freq), getAudioCtx().currentTime); }
+  });
+  renderMontarPiano();
+
+  // ---- chromatic strip (Dó3 a Dó4, 13 posições, sem wrap) ----
+  var STRIP_NOTES = NOTES;  // Reutilizar de NOTE_DATA
+  var STRIP_FREQS = FREQS;  // Reutilizar de NOTE_DATA
+  var STRIP_SHARP = SHARP;  // Reutilizar de NOTE_DATA
+  var STRIP_MAX = STRIP_NOTES.length - 1;
+  var strip = document.getElementById('strip');
+  var current = null;
+  var resultIndex = null;
+  
+  createButtonGrid(strip, STRIP_NOTES, {
+    baseClass: 'note-btn',
+    getExtraClass: function(i) { return STRIP_SHARP[i] ? ' sharp' : ''; },
+    onClick: function(i) { setCurrent(i); }
+  });
+
+  function renderStrip(){
+    Array.prototype.forEach.call(strip.children, function(b, i){
+      b.classList.toggle('active', current !== null && i === current);
+      b.classList.toggle('target', resultIndex !== null && i === resultIndex && i !== current);
+    });
+  }
+
+  var dirUpBtn = document.querySelector('.dir-btn[data-dir="up"]');
+  var dirDownBtn = document.querySelector('.dir-btn[data-dir="down"]');
+  function updateDirButtons(){
+    if (current === null) {
+      dirUpBtn.disabled = false;
+      dirDownBtn.disabled = false;
+      return;
+    }
+    // usa a magnitude já escolhida para saber se o próximo passo cabe na fita;
+    // sem magnitude escolhida ainda, testa com o menor passo possível (semitom)
+    // para nunca desativar um botão que ainda pode ser útil.
+    var mag = stepMagnitude || 1;
+    var pos = current + stepCount;
+    dirUpBtn.disabled = (pos + mag) > STRIP_MAX;
+    dirDownBtn.disabled = (pos - mag) < 0;
+  }
+
+  var readout = document.getElementById('intervalReadout');
+  function setCurrent(i){
+    current = i;
+    resultIndex = null;
+    stepDirection = null;
+    stepMagnitude = null;
+    stepCount = 0;
+    document.querySelectorAll('.dir-btn, .mag-btn').forEach(function(b){ b.classList.remove('active'); });
+    renderStrip();
+    updateDirButtons();
+    readout.innerHTML = 'Nota selecionada: <strong>' + STRIP_NOTES[current] + '</strong>';
+    playStrumNoteAt(STRIP_FREQS[current], getAudioCtx().currentTime);
+  }
+
+  var stepDirection = null;
+  var stepMagnitude = null;
+  var stepCount = 0;
+  function applyStep(){
+    if (current === null) {
+      readout.innerHTML = 'Selecione primeiro uma nota';
+      return;
+    }
+    if (stepDirection !== null && stepMagnitude === null) {
+      readout.innerHTML = 'Escolha entre semitom e tom também';
+      return;
+    }
+    if (stepMagnitude !== null && stepDirection === null) {
+      readout.innerHTML = 'Escolha o sentido que vamos percorrer: + ou -';
+      return;
+    }
+    if (stepDirection === null || stepMagnitude === null) {
+      readout.innerHTML = 'Selecione [subir, descer] e [semitom, 1 tom].';
+      return;
+    }
+    // cada clique soma mais um passo à posição atual, até ao limite da fita.
+    var delta = stepDirection === 'up' ? stepMagnitude : -stepMagnitude;
+    var attempted = stepCount + delta;
+    var blocked = (current + attempted) < 0 || (current + attempted) > STRIP_MAX;
+    if (!blocked) {
+      stepCount = attempted;
+      playStrumNoteAt(STRIP_FREQS[current + stepCount], getAudioCtx().currentTime);
+    }
+    var to = current + stepCount;
+    var absCount = Math.abs(stepCount);
+    var message;
+    if (stepCount === 0) {
+      message = 'De volta à nota original: <strong>' + STRIP_NOTES[current] + '</strong>';
+    } else {
+      var dirLabel = stepCount > 0 ? 'Subir' : 'Descer';
+      // usa "semitom" ou "tom" conforme a magnitude selecionada pelo utilizador
+      var unitLabel = stepMagnitude === 2 ? 'tom' : 'semitom';
+      var unitCount = stepMagnitude === 2 ? absCount / 2 : absCount;
+      var unitCountDisplay = Number.isInteger(unitCount) ? String(unitCount) : unitCount.toFixed(1).replace('.', ',');
+      var magPhrase = unitCountDisplay + ' ' + unitLabel + (unitCount === 1 ? '' : 's');
+      message = dirLabel + ' ' + magPhrase + ' a partir de <strong>' + STRIP_NOTES[current] + '</strong> -> <strong>' + STRIP_NOTES[to] + '</strong>';
+    }
+    readout.innerHTML = message;
+    resultIndex = to;
+    renderStrip();
+    updateDirButtons();
+  }
+  function magButtonGuidance(){
+    // Semitom/Tom só escolhem o tamanho do passo - quem aplica o passo (e move a
+    // nota) é sempre o + ou o -; aqui só atualizamos a mensagem de orientação.
+    if (current === null) {
+      readout.innerHTML = 'Selecione primeiro uma nota';
+      return;
+    }
+    if (stepDirection === null) {
+      readout.innerHTML = 'Escolha o sentido que vamos percorrer: + ou -';
+    }
+  }
+  function flashActive(btn){
+    btn.classList.add('active');
+    if (btn._flashTimeout) { clearTimeout(btn._flashTimeout); }
+    btn._flashTimeout = setTimeout(function(){
+      btn.classList.remove('active');
+    }, 220);
+  }
+  document.querySelectorAll('.dir-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      stepDirection = btn.dataset.dir;
+      flashActive(btn);
+      applyStep();
+    });
+  });
+  document.querySelectorAll('.mag-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      stepMagnitude = parseInt(btn.dataset.mag, 10);
+      if (current !== null) {
+        document.querySelectorAll('.mag-btn').forEach(function(b){ b.classList.toggle('active', b === btn); });
+      } else {
+        flashActive(btn);
+      }
+      updateDirButtons();
+      magButtonGuidance();
+    });
+  });
+  document.getElementById('resetIntervalBtn').addEventListener('click', function(){
+    current = null;
+    resultIndex = null;
+    stepDirection = null;
+    stepMagnitude = null;
+    stepCount = 0;
+    document.querySelectorAll('.dir-btn, .mag-btn').forEach(function(b){ b.classList.remove('active'); });
+    renderStrip();
+    updateDirButtons();
+    readout.innerHTML = '';
+  });
+
+  renderStrip();
+  updateDirButtons();
+
+  // ---- construtor de acordes ----
+  var rootGrid = document.getElementById('rootGrid');
+  var root = null;
+  var quality = null;
+
+  createButtonGrid(rootGrid, NOTES, {
+    baseClass: 'root-btn',
+    onClick: function(i) { root = i; update(); }
+  });
+
+  var qMajor = document.getElementById('qMajor');
+  var qMinor = document.getElementById('qMinor');
+  qMajor.addEventListener('click', function(){ quality = 'major'; update(); });
+  qMinor.addEventListener('click', function(){ quality = 'minor'; update(); });
+
+  var forma = null;
+  var formaBarra = document.getElementById('formaBarra');
+  var formaEscadinha = document.getElementById('formaEscadinha');
+  var formaPirete = document.getElementById('formaPirete');
+  formaBarra.addEventListener('click', function(){ forma = 'barra'; update(); });
+  formaEscadinha.addEventListener('click', function(){ forma = 'escadinha'; update(); });
+  formaPirete.addEventListener('click', function(){ forma = 'pirete'; update(); });
+
+  var chordName = document.getElementById('chordName');
+  var degreeList = document.getElementById('degreeList');
+  var fretWrap = document.getElementById('fretWrap');
+  var fretCaption = document.getElementById('fretCaption');
+  var pianoToggleBtn = document.getElementById('pianoToggleBtn');
+  var pianoTogglePanel = document.getElementById('pianoTogglePanel');
+
+  function buildChordHighlightPianoSvg(chordRoot, chordQuality){
+    var tf = montarThirdFifth(chordRoot, chordQuality);
+    var highlighted = {};
+    highlighted[chordRoot] = true;
+    highlighted[tf.third] = true;
+    highlighted[tf.fifth] = true;
+
+    // Para o highlighting, criamos um degreeOf que marca as teclas com string vazia (destaque sem número)
+    var degreeOf = {};
+    for (var idx in highlighted) {
+      degreeOf[idx] = ''; // string vazia = destacar mas não mostrar número
+    }
+
+    return SvgBuilder.buildPianoKeyboard({
+      maxIndex: 19,
+      keyW: 15.4,
+      keyH: 66,
+      blackW: 8.8,
+      blackH: 39.6,
+      degreeOf: degreeOf,
+      rootIdx: null, // Não mostrar label da nota
+      labelMap: MONTAR_LABELS,
+      isBlack: MONTAR_IS_BLACK,
+      freqFor: freqForAbsIndex,
+      strokeWidth: 1,
+      roleLabel: 'Piano com as teclas do acorde em destaque'
+    });
+  }
+
+  // string open pitch classes, C=0..B=11 : Sol=7, Sol=7, Si=11, Ré=2
+  var OPEN = [7,7,11,2];
+  var OPEN_NAMES = ['Sol','Sol','Si','Ré'];
+  var OPEN_FREQS = [196.00, 196.00, 246.94, 146.83];
+
+  function playChordDots(dots){
+    var freqs = [];
+    dots.forEach(function(fret, i){
+      if (fret === null || fret === undefined || fret < 0) return;
+      freqs.push(OPEN_FREQS[i] * Math.pow(2, fret / 12));
+    });
+    if (freqs.length) { playStrumSequence(freqs); }
+  }
+
+  function update(){
+    Array.prototype.forEach.call(rootGrid.children, function(b,i){ b.classList.toggle('active', i===root); });
+    qMajor.classList.toggle('active', quality==='major');
+    qMinor.classList.toggle('active', quality==='minor');
+    formaBarra.classList.toggle('active', forma==='barra');
+    formaEscadinha.classList.toggle('active', forma==='escadinha');
+    formaPirete.classList.toggle('active', forma==='pirete');
+
+    if (root === null || quality === null || forma === null) {
+      var missing = [];
+      if (root === null) missing.push('a nota');
+      if (quality === null) missing.push('a qualidade');
+      if (forma === null) missing.push('a forma');
+      var missingPhrase = missing.length === 1 ? missing[0]
+        : missing.slice(0, -1).join(', ') + ' e ' + missing[missing.length - 1];
+      chordName.textContent = 'Escolhe ' + missingPhrase + ' para ver o acorde';
+      if (pianoToggleBtn.getAttribute('aria-checked') === 'true') { pianoTogglePanel.innerHTML = ''; }
+      degreeList.innerHTML = '';
+      fretWrap.innerHTML = '';
+      fretCaption.innerHTML = '';
+      return;
+    }
+
+    var third = quality === 'major' ? mod12(root+4) : mod12(root+3);
+    var fifth = quality === 'major' ? mod12(third+3) : mod12(third+4);
+
+    chordName.textContent = NOTES[root] + (quality==='major' ? ' maior' : ' menor');
+    if (pianoToggleBtn.getAttribute('aria-checked') === 'true') {
+      pianoTogglePanel.innerHTML = buildChordHighlightPianoSvg(root, quality);
+    }
+
+    degreeList.innerHTML =
+      '<li><span class="deg">1.º</span><span class="desc mono">' + NOTES[root] + '</span></li>' +
+      '<li><span class="deg">3.º</span><span class="desc mono">' + NOTES[third] + '&nbsp;<span style="opacity:.65">(' + (quality==='major'?'+4':'+3') + ' semitons)</span></span></li>' +
+      '<li><span class="deg">5.º</span><span class="desc mono">' + NOTES[fifth] + '&nbsp;<span style="opacity:.65">(' + (quality==='major'?'+3':'+4') + ' semitons)</span></span></li>';
+
+    renderFret(root, quality, third, fifth);
+  }
+
+  function fretFor(openPc, targetPc){
+    return mod12(targetPc - openPc);
+  }
+
+  function renderFret(root, quality, third, fifth){
+    // target pitch class per string (1,1,3,5 relative to G-major shape, but we must
+    // find, for each string, which chord tone (root/3rd/5th) it plays under a straight barre.
+    // Straight barre at fret f = (root - G) mod 12 always yields the MAJOR chord (G-shape).
+    var fMajor = fretFor(7, root); // fret where string tuned to G sounds `root`
+    var svg, caption, note, chordDots;
+    var formaName = forma === 'barra' ? 'Barra' : 'Escadinha';
+    var useBar = (forma === 'barra' && quality === 'major'); // só a Barra maior usa uma barra contínua
+
+    if (quality === 'major' && forma === 'escadinha') {
+      // indicador: cordas Sol (0,1) · médio: corda Si (2, toca a fundamental) · anelar: corda Ré (3, toca a 3ª maior)
+      var fMedio = mod12(root + 1);
+      var fIndicador = fMedio - 1;
+      var fAnelar = fMedio + 1;
+      var hasIndicador = fIndicador >= 0;
+      var showIndicador = fIndicador > 0;
+      var dotsEsc = hasIndicador ? [fIndicador, fIndicador, fMedio, fAnelar] : [null, null, fMedio, fAnelar];
+      chordDots = dotsEsc;
+      svg = buildSvg(dotsEsc, hasIndicador ? [[0,1]] : []);
+      caption = 'Escadinha - médio na casa ' + fMedio + (hasIndicador ? '' : ' (indicador fora do braço nesta posição)');
+      note = showIndicador
+        ? 'Indicador nas cordas Sol (casa ' + fIndicador + '), médio na corda Si (casa ' + fMedio + '), anelar na corda Ré (casa ' + fAnelar + ').'
+        : (hasIndicador
+          ? 'Médio na corda Si (casa ' + fMedio + ') e anelar na corda Ré (casa ' + fAnelar + '); as cordas Sol ficam soltas, sem dedo a pressionar.'
+          : 'Médio na corda Si (casa ' + fMedio + ') e anelar na corda Ré (casa ' + fAnelar + '); o indicador ficaria numa casa negativa, por isso as cordas Sol não são indicadas.');
+    } else if (quality === 'major' && forma === 'pirete') {
+      // anelar: corda Ré (3, toca a fundamental) · médio: cordas Sol (0,1, toca a 3ª maior) · indicador: corda Si (2, toca a 5ª)
+      var fAnelarP = mod12(root - 2);
+      var fMedioP = fAnelarP - 1;
+      var fIndicadorP = fAnelarP - 2;
+      var dotsP = [
+        fMedioP > 0 ? fMedioP : null,
+        fMedioP > 0 ? fMedioP : null,
+        fIndicadorP > 0 ? fIndicadorP : null,
+        fAnelarP > 0 ? fAnelarP : null
+      ];
+      chordDots = dotsP;
+      svg = buildSvg(dotsP, fMedioP > 0 ? [[0,1]] : []);
+      caption = 'Pirete - anelar na casa ' + fAnelarP;
+      var piretePieces = [];
+      if (fIndicadorP > 0) piretePieces.push('indicador na corda Si (casa ' + fIndicadorP + ')');
+      if (fMedioP > 0) piretePieces.push('médio nas cordas Sol (casa ' + fMedioP + ')');
+      piretePieces.push(fAnelarP > 0 ? ('anelar na corda Ré (casa ' + fAnelarP + ')') : 'anelar solto na corda Ré');
+      note = piretePieces.join(', ') + '.';
+      if (fIndicadorP <= 0 || fMedioP <= 0) {
+        note += ' Nesta posição, alguns dedos ficam fora do braço ou em cordas soltas, por isso não são indicados.';
+      }
+    } else if (quality === 'major') {
+      var dots = [fMajor, fMajor, fMajor, fMajor];
+      chordDots = dots;
+      svg = buildSvg(dots, useBar ? [[0,1,2,3]] : []);
+      caption = formaName + ' - casa ' + fMajor + (fMajor===0 ? ' (cordas soltas)' : '');
+      note = useBar ? 'Um dedo trava as 4 cordas na casa ' + fMajor + '.' : 'Dedos colocados em degrau, cada um na sua corda, todos na casa ' + fMajor + '.';
+    } else if (forma === 'escadinha') {
+      // barra nas 4 cordas na casa da raiz + médio a pressionar em conjunto as cordas Ré e Si na casa seguinte
+      var fBarreEscMenor = mod12(root);
+      var fMedioEscMenor = fBarreEscMenor + 1;
+      var dotsEscMenor = [fBarreEscMenor, fBarreEscMenor, fMedioEscMenor, fMedioEscMenor];
+      chordDots = dotsEscMenor;
+      svg = buildSvg(dotsEscMenor, [[0,1],[2,3]]);
+      caption = 'Escadinha - barra na casa ' + fBarreEscMenor + ', médio na casa ' + fMedioEscMenor;
+      note = 'Barra nas 4 cordas na casa ' + fBarreEscMenor + (fBarreEscMenor===0 ? ' (cordas soltas)' : '') + '; o médio pressiona em conjunto as cordas Ré e Si na casa ' + fMedioEscMenor + ', baixando o acorde para menor.';
+    } else if (forma === 'pirete') {
+      // barra nas cordas Sol e Si + anelar sobe a corda Ré duas casas acima da barra, pulando uma casa
+      var fBarrePireteMenor = mod12(root - 4);
+      var fAnelarPireteMenor = fBarrePireteMenor + 2;
+      var dotsPireteMenor = [fBarrePireteMenor, fBarrePireteMenor, fBarrePireteMenor, fAnelarPireteMenor];
+      chordDots = dotsPireteMenor;
+      svg = buildSvg(dotsPireteMenor, [[0,1,2]]);
+      caption = 'Pirete - barra na casa ' + fBarrePireteMenor + ', anelar na casa ' + fAnelarPireteMenor;
+      note = 'Barra nas cordas Sol e Si na casa ' + fBarrePireteMenor + (fBarrePireteMenor===0 ? ' (cordas soltas)' : '') + '; o anelar sobe a corda Ré até à casa ' + fAnelarPireteMenor + ', pulando a casa ' + (fBarrePireteMenor+1) + '.';
+    } else {
+      if (fMajor === 0) {
+        fretWrap.innerHTML = '<p style="text-align:left;color:var(--ink-soft);font-size:1.0125rem;padding:20px 8px;">A barra simples não é possível na posição aberta para ' + NOTES[root] + ' menor - experimenta outra forma para este acorde.</p>';
+        fretCaption.textContent = '';
+        return;
+      }
+      // strings 0,1,3 at fMajor ; string 2 (Si string, the 3rd) at fMajor-1
+      var dots2 = [fMajor, fMajor, fMajor - 1, fMajor];
+      chordDots = dots2;
+      svg = buildSvg(dots2, []);
+      caption = 'Barra partida - casa ' + fMajor + ', 3ª corda um traste atrás (casa ' + (fMajor-1) + ')';
+      note = 'A corda do Si fica uma casa abaixo das outras três, para baixar o 3.º grau.';
+    }
+
+    fretWrap.innerHTML = svg;
+    var noteEscaped = note.replace(/&/g, '&amp;').replace(/"/g, '&quot;');
+    fretCaption.innerHTML = '<span class="tooltip" tabindex="0" data-tooltip="' + noteEscaped + '">' + caption + '</span>';
+    playChordDots(chordDots);
+  }
+
+  function buildSvg(dots, barreGroups){
+    // barreGroups: lista de grupos de cordas (ex.: [[0,1],[2,3]]) - cada grupo partilha uma barra na sua própria casa
+    var barredIndices = [];
+    barreGroups.forEach(function(group){ barredIndices = barredIndices.concat(group); });
+    // uma "casa" é o espaço entre duas barras de traste consecutivas - nunca a barra em si.
+    var relevant = dots.filter(function(f){ return f !== null && f !== undefined && f > 0; });
+    var minFret = relevant.length ? Math.min.apply(null, relevant) : 0;
+    var base = relevant.length ? (minFret - 1) : 0; // barra 0 (linha0) fica logo acima da 1ª casa usada
+    var lineCount = 4; // sempre 4 casas: a(s) do acorde + as seguintes, para todas as figuras terem a mesma dimensão
+
+    var xs = [30, 70, 110, 150];
+    var top = 34, gap = 42;
+    var w = 180, h = top + gap*lineCount + 26;
+    var parts = [];
+    parts.push('<svg viewBox="0 0 ' + w + ' ' + h + '" role="img" aria-label="Diagrama de posição no cavaquinho">');
+
+    // string labels
+    OPEN_NAMES.forEach(function(n, i){
+      parts.push('<text x="'+xs[i]+'" y="16" text-anchor="middle" font-size="11" fill="currentColor" opacity=".55" font-family="ui-monospace,monospace">'+n+'</text>');
+    });
+
+    // strings (vertical)
+    xs.forEach(function(x){
+      parts.push('<line x1="'+x+'" y1="'+top+'" x2="'+x+'" y2="'+(top+gap*lineCount)+'" stroke="currentColor" stroke-width="1.3" opacity=".5"/>');
+    });
+
+    // barras de traste (as linhas em si, sem número - o número pertence à casa/espaço)
+    for (var i=0;i<=lineCount;i++){
+      var yLine = top + gap*i;
+      var isNut = (base===0 && i===0);
+      var isNeckEnd = (base+i === FRET_MAX && i === lineCount);
+      parts.push('<line x1="20" y1="'+yLine+'" x2="160" y2="'+yLine+'" stroke="currentColor" stroke-width="'+(isNut?3:1.2)+'" opacity="'+(isNut?0.9:0.45)+'"/>');
+      if (isNut) {
+        parts.push('<text x="20" y="'+(yLine-7)+'" text-anchor="start" font-size="7" fill="currentColor" opacity=".35" font-family="ui-monospace,monospace">início do braço</text>');
+      }
+      if (isNeckEnd) {
+        parts.push('<text x="20" y="'+(yLine+11)+'" text-anchor="start" font-size="7" fill="currentColor" opacity=".35" font-family="ui-monospace,monospace">fim do braço</text>');
+      }
+    }
+
+    // números das casas, no meio do espaço entre cada par de barras
+    for (var c=1;c<=lineCount;c++){
+      var yMid = top + gap*c - gap/2;
+      parts.push('<text x="10" y="'+(yMid+4)+'" text-anchor="middle" font-size="9" fill="currentColor" opacity=".5" font-family="ui-monospace,monospace">'+(base+c)+'</text>');
+    }
+
+    // barras (cada grupo de 2+ cordas travadas em conjunto, na sua própria casa)
+    barreGroups.forEach(function(group){
+      if (group.length < 2) return;
+      var barFret = dots[group[0]];
+      if (!barFret) return;
+      var barXs = group.map(function(idx){ return xs[idx]; });
+      var xStart = Math.min.apply(null, barXs);
+      var xEnd = Math.max.apply(null, barXs);
+      var yBar = top + gap*(barFret - base) - gap/2;
+      parts.push('<rect x="'+(xStart-16)+'" y="'+(yBar-7)+'" width="'+(xEnd-xStart+32)+'" height="14" rx="7" fill="var(--wood)"/>');
+    });
+
+    // dots - sempre no espaço (casa) entre duas barras, nunca sobre a barra
+    dots.forEach(function(fret, i){
+      if (!fret || fret <= 0) return;
+      var y = top + gap*(fret - base) - gap/2;
+      var targetPc = mod12(OPEN[i] + fret);
+      var label = NOTES[targetPc].replace('#','♯');
+      if (barredIndices.indexOf(i) === -1) {
+        parts.push('<rect x="'+(xs[i]-13)+'" y="'+(y-10)+'" width="26" height="20" rx="10" fill="var(--wood)"/>');
+      }
+      parts.push('<text x="'+xs[i]+'" y="'+(y+3)+'" text-anchor="middle" font-size="8.5" fill="var(--paper-raised)" font-family="ui-monospace,monospace">'+label+'</text>');
+    });
+
+    parts.push('</svg>');
+    return parts.join('');
+  }
+
+  pianoToggleBtn.addEventListener('click', function(){
+    var isOn = pianoToggleBtn.getAttribute('aria-checked') === 'true';
+    pianoToggleBtn.setAttribute('aria-checked', String(!isOn));
+    if (!isOn) {
+      pianoTogglePanel.hidden = false;
+      if (root !== null && quality !== null) {
+        pianoTogglePanel.innerHTML = buildChordHighlightPianoSvg(root, quality);
+      }
+    } else {
+      pianoTogglePanel.hidden = true;
+      pianoTogglePanel.innerHTML = '';
+    }
+  });
+
+  update();
+
+  // ---- diagramas de forma (sem casas/cordas) para os cartões de Barra/Escadinha/Pirete ----
+  (function(){
+    function buildShapeSvg(dots, barreGroups){
+      var relevant = dots.filter(function(f){ return f !== null && f !== undefined && f > 0; });
+      var minFret = relevant.length ? Math.min.apply(null, relevant) : 0;
+      var base = relevant.length ? (minFret - 1) : 0;
+      var lineCount = 4;
+      var xs = [18, 38, 58, 78];
+      var top = 8, gap = 20;
+      var w = 96, h = top + gap*lineCount + 6;
+      var parts = [];
+      parts.push('<svg width="' + w + '" height="' + h + '" viewBox="0 0 ' + w + ' ' + h + '" role="img" aria-label="Forma da posição, sem casas nem cordas assinaladas">');
+      xs.forEach(function(x){
+        parts.push('<line x1="'+x+'" y1="'+top+'" x2="'+x+'" y2="'+(top+gap*lineCount)+'" stroke="currentColor" stroke-width="1" opacity=".5"/>');
+      });
+      for (var i=0;i<=lineCount;i++){
+        var yLine = top + gap*i;
+        var isNut = (base===0 && i===0);
+        parts.push('<line x1="10" y1="'+yLine+'" x2="86" y2="'+yLine+'" stroke="currentColor" stroke-width="'+(isNut?2.4:1)+'" opacity="'+(isNut?0.9:0.4)+'"/>');
+      }
+      var barredIndices = [];
+      barreGroups.forEach(function(g){ barredIndices = barredIndices.concat(g); });
+      barreGroups.forEach(function(group){
+        if (group.length < 2) return;
+        var barFret = dots[group[0]];
+        if (!barFret) return;
+        var gxs = group.map(function(idx){ return xs[idx]; });
+        var xStart = Math.min.apply(null, gxs), xEnd = Math.max.apply(null, gxs);
+        var yBar = top + gap*(barFret - base) - gap/2;
+        parts.push('<rect x="'+(xStart-5)+'" y="'+(yBar-4)+'" width="'+(xEnd-xStart+10)+'" height="8" rx="4" fill="var(--wood)"/>');
+      });
+      dots.forEach(function(fret, i){
+        if (!fret || fret <= 0 || barredIndices.indexOf(i) !== -1) return;
+        var y = top + gap*(fret - base) - gap/2;
+        parts.push('<circle cx="'+xs[i]+'" cy="'+y+'" r="6" fill="var(--wood)"/>');
+      });
+      parts.push('</svg>');
+      return parts.join('');
+    }
+
+    var examples = {
+      shapeBarraMaior: (function(){ var f = mod12(4-7); return { dots:[f,f,f,f], bars:[[0,1,2,3]] }; })(),
+      shapeBarraMenor: (function(){ var f = mod12(4-7); return { dots:[f,f,f-1,f], bars:[] }; })(),
+      shapeEscadinhaMaior: (function(){ var fm=mod12(4+1), fi=fm-1, fa=fm+1; return { dots:[fi,fi,fm,fa], bars: fi>0 ? [[0,1]] : [] }; })(),
+      shapeEscadinhaMenor: (function(){ var fb=mod12(4), fm=fb+1; return { dots:[fb,fb,fm,fm], bars:[[0,1],[2,3]] }; })(),
+      shapePireteMaior: (function(){ var fa=mod12(7-2), fm=fa-1, fi=fa-2; return { dots:[fm,fm,fi,fa], bars: fm>0 ? [[0,1]] : [] }; })(),
+      shapePireteMenor: (function(){ var fb=mod12(7-4), fa=fb+2; return { dots:[fb,fb,fb,fa], bars:[[0,1,2]] }; })()
+    };
+
+    Object.keys(examples).forEach(function(id){
+      var el = document.getElementById(id);
+      if (el) el.innerHTML = buildShapeSvg(examples[id].dots, examples[id].bars);
+    });
+  })();
+
+  // ---- tooltips acessíveis por toque (todas, incluindo as criadas dinamicamente) ----
+  (function(){
+    document.querySelectorAll('.tooltip, .piano-tooltip').forEach(function(el){
+      el.setAttribute('role', 'button');
+      if (!el.hasAttribute('aria-expanded')) el.setAttribute('aria-expanded', 'false');
+    });
+    // garante que a janela da tooltip nunca sai da área visível do ecrã
+    function positionTooltip(trigger){
+      var rect = trigger.getBoundingClientRect();
+      var maxWidth = 220;
+      var edgePadding = 12; // Increased from 8 for more screen margin on mobile
+      var viewportWidth = document.documentElement.clientWidth;
+      var shift = 0;
+      // The tooltip is centered on the trigger by default (left: 0 means left edge of trigger)
+      // We need to check if the right edge goes beyond viewport
+      var tooltipRightEdge = rect.left + maxWidth;
+      var overflowRight = tooltipRightEdge - (viewportWidth - edgePadding);
+      if (overflowRight > 0) { shift = -overflowRight; }
+      // After shifting left, ensure the left edge doesn't go below edgePadding
+      if (rect.left + shift < edgePadding) { shift = edgePadding - rect.left; }
+      trigger.style.setProperty('--tip-shift', shift + 'px');
+    }
+    document.addEventListener('mouseover', function(e){
+      var trigger = e.target.closest && e.target.closest('.tooltip, .piano-tooltip');
+      if (trigger) positionTooltip(trigger);
+    });
+    document.addEventListener('focusin', function(e){
+      var trigger = e.target.closest('.tooltip, .piano-tooltip');
+      if (trigger) positionTooltip(trigger);
+    });
+    function closeAll(except){
+      document.querySelectorAll('.tooltip-open').forEach(function(el){
+        if (el !== except) {
+          el.classList.remove('tooltip-open');
+          el.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+    document.addEventListener('click', function(e){
+      var trigger = e.target.closest('.tooltip, .piano-tooltip');
+      if (trigger) {
+        e.stopPropagation();
+        var wasOpen = trigger.classList.contains('tooltip-open');
+        closeAll(trigger);
+        if (!wasOpen) { positionTooltip(trigger); }
+        trigger.classList.toggle('tooltip-open', !wasOpen);
+        trigger.setAttribute('role', 'button');
+        trigger.setAttribute('aria-expanded', String(!wasOpen));
+      } else {
+        closeAll(null);
+      }
+    });
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape') closeAll(null);
+    });
+  })();
+
+  // ---- índice rápido flutuante ----
+  (function(){
+    var toggle = document.getElementById('quickNavToggle');
+    var panel = document.getElementById('quickNavPanel');
+    var mainNav = document.querySelector('nav.toc');
+    function closeQuickNav(){
+      panel.hidden = true;
+      toggle.setAttribute('aria-expanded', 'false');
+    }
+    function openQuickNav(){
+      panel.hidden = false;
+      toggle.setAttribute('aria-expanded', 'true');
+    }
+    toggle.addEventListener('click', function(e){
+      e.stopPropagation();
+      if (panel.hidden) { openQuickNav(); } else { closeQuickNav(); }
+    });
+    panel.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', closeQuickNav);
+    });
+    document.addEventListener('click', function(e){
+      if (!panel.hidden && !panel.contains(e.target) && e.target !== toggle) {
+        closeQuickNav();
+      }
+    });
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape') closeQuickNav();
+    });
+
+    if (mainNav && 'IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function(entries){
+        var navVisible = entries[0].isIntersecting;
+        toggle.classList.toggle('visible', !navVisible);
+        if (navVisible) { closeQuickNav(); }
+      });
+      observer.observe(mainNav);
+    } else {
+      toggle.classList.add('visible');
+    }
+  })();
+
+  // ---- barra de progresso de leitura ----
+  (function(){
+    var fill = document.getElementById('scrollProgressFill');
+    var bar = fill.parentElement;
+    var ticking = false;
+    function updateProgress(){
+      var scrollTop = window.scrollY || document.documentElement.scrollTop;
+      var docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      var pct = docHeight > 0 ? Math.min(100, Math.max(0, (scrollTop / docHeight) * 100)) : 0;
+      fill.style.width = pct + '%';
+      bar.setAttribute('aria-valuenow', Math.round(pct));
+      ticking = false;
+    }
+    function onScroll(){
+      if (!ticking) {
+        requestAnimationFrame(updateProgress);
+        ticking = true;
+      }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    updateProgress();
+  })();
+})();
+</script>
+</body>
+</html>
+
+

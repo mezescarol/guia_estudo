@@ -74,7 +74,7 @@
   }
 
   *{ box-sizing:border-box; }
-  html{ font-size: 16px; overflow-x: hidden; }
+  html{ font-size: 16px; overflow-x: hidden; overflow-y: scroll; scrollbar-gutter: stable; }
   body{
     margin:0;
     background: var(--paper);
@@ -116,6 +116,50 @@
   .cover h1{ font-size: clamp(2.4rem, 7vw, 3.6rem); margin: 0 0 10px; letter-spacing: -0.01em; text-align: center; }
   .cover p.sub{ margin: 0 0 20px; color: var(--ink-soft); font-size: 1.26rem; }
   .cover p.sub strong{ color: var(--ink); font-weight: 700; }
+  .cover p.sub .instrument-icons{
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    width: 100%;
+    margin-top: 12px;
+  }
+  .cover p.sub .instrument-icons .instrument-item{
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+  .cover p.sub .instrument-icons .instrument-label{
+    font-size: 0.72rem;
+    line-height: 1.2;
+    color: var(--ink-soft);
+    text-align: center;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-4px);
+    transition: opacity .2s ease, transform .2s ease, visibility .2s ease;
+  }
+  .cover p.sub .instrument-icons .instrument-item:hover .instrument-label{
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  .cover p.sub .instrument-icons .instrument-item img[src$="cavaquinho.png"],
+  .cover p.sub .instrument-icons .instrument-item img[src$="guitar.png"],
+  .cover p.sub .instrument-icons .instrument-item img[src$="bandolim.png"]{
+    width: 88px;
+    height: 88px;
+    object-fit: contain;
+    transition: transform .55s ease, width .24s ease, height .24s ease;
+    transform-origin: center center;
+  }
+  .cover p.sub .instrument-icons .instrument-item img[src$="cavaquinho.png"]:hover,
+  .cover p.sub .instrument-icons .instrument-item img[src$="guitar.png"]:hover,
+  .cover p.sub .instrument-icons .instrument-item img[src$="bandolim.png"]:hover{
+    width: 100px;
+    height: 100px;
+    transform: rotate(45deg);
+  }
   .cover .byline{
     font-family: ui-monospace, 'Cascadia Mono', 'SFMono-Regular', Consolas, monospace;
     font-size: 0.78125rem; letter-spacing: .06em; color: var(--ink-soft);
@@ -157,6 +201,36 @@
     font-size: 0.875rem; white-space: nowrap;
   }
   .quick-nav-panel a:hover{ background: var(--azulejo-pale); color: var(--azulejo-ink); }
+  .quick-nav-pages{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .quick-nav-page-btn{
+    font: inherit;
+    font-size: 0.875rem;
+    color: var(--ink-soft);
+    background: transparent;
+    border: 1px solid var(--line);
+    border-radius: 7px;
+    padding: 8px 12px;
+    text-align: left;
+    cursor: default;
+    display: block;
+    text-decoration: none;
+  }
+  .quick-nav-submenu{
+    margin: 2px 0 4px 14px;
+    padding: 6px 0 6px 10px;
+    border-left: 2px solid var(--line);
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .quick-nav-submenu a{
+    padding: 7px 10px;
+    font-size: 0.82rem;
+  }
 
   .scroll-progress{
     position: fixed; left: 0; bottom: 0; width: 100%; height: 6px; z-index: 49;
