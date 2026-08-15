@@ -112,6 +112,19 @@
     font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft);
     margin-bottom: 10px; text-align: center;
   }
+  .cover .eyebrow a{
+    color: inherit;
+    text-decoration: none;
+  }
+  .cover .eyebrow a:hover,
+  .cover .eyebrow a:focus-visible{
+    color: inherit;
+    text-decoration: none;
+  }
+  .cover .eyebrow .is-current{
+    color: var(--azulejo);
+    font-weight: 700;
+  }
   .eyebrow-icon{ width:15px; height:15px; vertical-align:-3px; margin-left:3px; }
   .cover h1{ font-size: clamp(2.4rem, 7vw, 3.6rem); margin: 0 0 10px; letter-spacing: -0.01em; text-align: center; }
   .cover p.sub{ margin: 0 0 20px; color: var(--ink-soft); font-size: 1.26rem; }
@@ -171,6 +184,11 @@
     display:flex; flex-wrap:wrap; gap: 8px 18px; justify-content:center;
     padding: 18px 0 40px; margin-bottom: 8px; border-bottom: 1px solid var(--line);
     font-size: 0.84375rem;
+  }
+  .toc-separator{
+    padding: 9px 0 40px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid var(--line);
   }
   nav.toc a{ color: var(--ink-soft); text-decoration:none; }
   nav.toc a:hover{ color: var(--azulejo-ink); }

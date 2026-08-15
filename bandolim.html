@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bandolim - Guia de Estudo</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="page">
+
+  <header class="cover">
+    <div class="staff"><span></span><span></span><span></span><span></span><span></span></div>
+    <div class="eyebrow"><a href="index.html">Página inicial</a> · <a href="cavaquinho.html">Cavaquinho</a> · <span class="is-current">Bandolim</span> · <a href="guitarra.html">Guitarra</a></div>
+    <div class="toc-separator" aria-hidden="true"></div>
+  </header>
+
+  <button id="quickNavToggle" class="quick-nav-toggle visible" type="button" aria-expanded="false" aria-controls="quickNavPanel" aria-label="Abrir índice de secções">☰</button>
+  <div id="quickNavPanel" class="quick-nav-panel" hidden>
+    <div class="quick-nav-pages" role="group" aria-label="Navegação">
+      <a href="index.html" class="quick-nav-page-btn">Página inicial</a>
+      <a href="cavaquinho.html" class="quick-nav-page-btn">Cavaquinho</a>
+      <button type="button" class="quick-nav-page-btn">Bandolim</button>
+        <div class="quick-nav-submenu" aria-label="Navegação interna de Bandolim">
+            <a href="#afinacao">01 · Introdução</a>
+            <a href="#tons">02 · Tons e semitons</a>
+            <a href="#acorde">03 · Acordes</a>
+            <a href="#formas">04 · Técnica</a>
+            <a href="#construtor">05 · Prática</a>
+            <a href="#recursos">06 · Conteúdo extra</a>
+        </div>
+      <button type="button" class="quick-nav-page-btn">Guitarra</button>
+    </div>
+  </div>
+
+  <footer>Feito por Carolina Mezes - Coimbra, agosto de 2026.<br>Utilizado material de apoio feito por Beatriz Ormonde e Daniel Madeira - Coimbra, Março de 2024</footer>
+</div>
+
+<script>
+(function(){
+  var toggle = document.getElementById('quickNavToggle');
+  var panel = document.getElementById('quickNavPanel');
+  function closeQuickNav(){
+    panel.hidden = true;
+    toggle.setAttribute('aria-expanded', 'false');
+  }
+  toggle.addEventListener('click', function(e){
+    e.stopPropagation();
+    var isOpen = !panel.hidden;
+    panel.hidden = isOpen;
+    toggle.setAttribute('aria-expanded', String(!isOpen));
+  });
+  panel.querySelectorAll('a').forEach(function(link){
+    link.addEventListener('click', closeQuickNav);
+  });
+  document.addEventListener('click', function(e){
+    if (!panel.hidden && !panel.contains(e.target) && e.target !== toggle) closeQuickNav();
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape') closeQuickNav();
+  });
+})();
+</script>
+</body>
+</html>
