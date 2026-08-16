@@ -303,6 +303,12 @@
       stepCount = attempted;
       playStrumNoteAt(STRIP_FREQS[current + stepCount], getAudioCtx().currentTime);
     }
+    describeCurrentStep();
+  }
+  function describeCurrentStep(){
+    // constrói a mensagem de feedback a partir do stepCount já existente - reaproveitada
+    // pelo applyStep() (após aplicar um novo passo) e pela troca de magnitude (sem mover
+    // a nota), para a distância aparecer sempre expressa na unidade atualmente selecionada.
     var to = current + stepCount;
     var absCount = Math.abs(stepCount);
     var message;
@@ -313,7 +319,7 @@
       var unitLabel = stepMagnitude === 2 ? 'tom' : 'semitom';
       var unitCount = stepMagnitude === 2 ? absCount / 2 : absCount;
       var unitCountDisplay = Number.isInteger(unitCount) ? String(unitCount) : unitCount.toFixed(1).replace('.', ',');
-      var magPhrase = unitCountDisplay + ' ' + unitLabel + (unitCount === 1 ? '' : 's');
+      var magPhrase = unitCountDisplay + ' ' + (unitCount === 1 ? unitLabel : unitLabel.slice(0, -1) + 'ns');
       message = dirLabel + ' ' + magPhrase + ' a partir de <strong>' + STRIP_NOTES[current] + '</strong> -> <strong>' + STRIP_NOTES[to] + '</strong>';
     }
     readout.innerHTML = message;
@@ -324,6 +330,11 @@
   function magButtonGuidance(){
     if (current === null) {
       readout.innerHTML = 'Selecione primeiro uma nota';
+      return;
+    }
+    if (stepCount !== 0) {
+      // já havia um passo aplicado - reexpressa a mesma distância na unidade recém-escolhida
+      describeCurrentStep();
       return;
     }
     if (stepDirection === null) {

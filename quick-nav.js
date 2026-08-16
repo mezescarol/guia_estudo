@@ -79,21 +79,13 @@
   }
 
   function handleTitleClick(page){
-    var hasSections = page.sections.length > 0;
-    var alreadyExpanded = expandedId === page.id;
-
-    if (hasSections && !alreadyExpanded) {
+    // um único clique já navega - expande os subtítulos (se os houver) antes de sair,
+    // para a página de destino carregar com o menu aberto nesse mesmo estado.
+    if (page.sections.length && expandedId !== page.id) {
       collapseExpanded();
       expandedId = page.id;
       submenus[page.id].hidden = false;
       buttons[page.id].setAttribute('aria-expanded', 'true');
-      return;
-    }
-
-    // já é o título expandido (clique repetido) ou não tem subtítulos: navega
-    if (!alreadyExpanded) {
-      collapseExpanded();
-      expandedId = page.id;
     }
     navigateToPageTop(page);
   }

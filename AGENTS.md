@@ -95,11 +95,22 @@ don't merge them or let one accidentally trigger another's classes.
    by 1.2x via `transform:scale(1.2)` on the item itself, not just the `<img>`) and `.has-clicked`
    to the `.instrument-icons` container (dims every *other* item to `opacity:0.3` via
    `.has-clicked .instrument-item:not(.icon-clicked)`). Navigation is delayed by
-   `CLICK_TRANSITION_MS` (currently `600` in the inline script), which is **kept exactly equal**
-   to the CSS transition duration (`.instrument-item{ transition: transform .6s ease, opacity .6s
-   ease; }`) — no buffer beyond the animation itself, per explicit instruction ("remova o delay
-   atual" after an earlier version added an arbitrary extra wait). If either number changes,
-   change both together.
+   `CLICK_TRANSITION_MS` (currently `850` in the inline script), which is **kept exactly equal**
+   to the CSS transition duration (`.instrument-item{ transition: transform .85s ease, opacity
+   .85s ease; }`) — no buffer beyond the animation itself, per explicit instruction ("remova o
+   delay atual" after an earlier version added an arbitrary extra wait). If either number changes,
+   change both together. Bumped `600`→`700`→`850` (`.6s`→`.7s`→`.85s`) across two follow-up
+   requests this session — same "change both together" rule applies to any future adjustment.
+   - **Clicking during the entrance sequence interrupts it** (real bug fixed this session): `spin()`
+     schedules its `HOLD_MS`/`GAP_MS` timers via `setTimeout`, and until this fix nothing ever
+     cancelled them, so clicking an icon mid-sequence still let *other* icons rotate into
+     `.auto-spin` underneath the dimmed/selected click state, visibly fighting it. Every timer id
+     `spin()` schedules is now pushed onto a module-level `spinTimers` array; the click handler
+     calls `stopSequence()` first (clears every pending timer via `clearSpinTimers()`, sets
+     `running = false`, strips `.auto-spin` from all items including the just-clicked one, since
+     otherwise its rotate transform would stack with `.icon-clicked`'s scale). If you add more
+     `setTimeout` calls to the entrance sequence, push their ids onto `spinTimers` too or this
+     breaks again silently.
 3. **Desktop hover** (`@media (min-width: 621px)` only): the *same* rotate+scale visual as the
    entrance animation, but via real `:hover`, deliberately **not** available on mobile — mobile
    `:hover`-on-tap was explicitly removed (touch browsers fire `:hover` on tap unpredictably,
@@ -116,14 +127,18 @@ narrower version, a stale enlarged/dimmed icon set could otherwise reappear on a
 A plain fresh full page load doesn't need this — the script re-runs from scratch, nothing is ever
 set on a brand-new DOM.
 
-**Icon sizing:** desktop is a flat `88px` (`aspect-ratio:1/1`, not a fixed height — lets the
-mobile override below change only `width`). Mobile:
-`width: clamp(64px, calc((100vw - 2 * var(--page-pad) - 28px) / 3), 112px)` — computed straight
-from the real available row width (viewport minus both page paddings minus the two 14px gaps
-between 3 icons, divided by 3), so the icons grow to fill the row on narrow phones without ever
-crossing the page's own side margins. If the icon count or gap ever changes, recompute this
-formula (don't just guess a new clamp range). Mobile also gets extra breathing room above the row:
-`.instrument-icons{ margin-top: 28px }` inside the same `max-width:620px` block (base is `12px`).
+**Icon sizing:** desktop is a flat `105.6px` (`aspect-ratio:1/1`, not a fixed height — lets the
+mobile override below change only `width`) — bumped up 20% from the original `88px` on explicit
+request. Mobile: `width: clamp(64px, calc((100vw - 2 * var(--page-pad) - 28px) / 3), 112px)` —
+computed straight from the real available row width (viewport minus both page paddings minus the
+two 14px gaps between 3 icons, divided by 3), so the icons grow to fill the row on narrow phones
+without ever crossing the page's own side margins. If the icon count or gap ever changes,
+recompute this formula (don't just guess a new clamp range); it's independent of the desktop base
+value, so changing one doesn't affect the other. **`.instrument-icons{ margin-top: 28px }` is now
+the single base value, applying to both breakpoints** — it used to be `12px` on desktop with a
+mobile-only override to `28px`; on request ("aumentar o espaçamento... na versão desktop" to match
+mobile) the base was raised to `28px` and the now-redundant mobile override was deleted rather than
+left duplicated.
 
 ## Quick-nav dropdown menu — rebuilt as one shared, data-driven system this session
 
@@ -145,11 +160,15 @@ correction rounds):
 - Opening the menu always shows the **current page's own** subtitles pre-expanded — `expandedId`
   initializes to `document.body.dataset.page` fresh every time the script runs (page load or
   bfcache-style reopen), it is **not** persisted from a previous page's state.
-- Clicking a *different* title that has subtitles collapses whatever was expanded and expands
-  that title's subtitles instead — no navigation on this click.
-- Clicking the *already-expanded* title again, or any title with zero subtitles (Página inicial,
-  Guitarra), navigates: scrolls to the top of the current page (no reload) if it's the page
-  you're already on, otherwise does a full navigation to that page's `.html`.
+- **A single click on any title now both expands its subtitles (if it has any) and navigates
+  immediately** — `handleTitleClick()` used to require a second click on an already-expanded
+  title to navigate (first click only expanded); that two-click requirement was removed on
+  explicit request ("Não deve mais ser necessário clicar uma segunda vez"). Navigation is: scroll
+  to the top of the current page (no reload) if it's the page you're already on, otherwise a full
+  navigation to that page's `.html`. Because `expandedId` re-initializes to the arriving page's own
+  `data-page` on load (previous bullet), **the destination page's menu reopens with that same title
+  already expanded** without any extra state needing to be passed across the navigation — this
+  falls out of the existing init logic, don't add sessionStorage/URL-param plumbing to replicate it.
 - Clicking a visible subtitle link navigates straight to `page.html#sectionId`.
 
 **Real bug fixed this session:** `.quick-nav-submenu{ display:flex; ... }` had no `[hidden]`
@@ -253,7 +272,15 @@ underneath the banner).
   gray fill + `opacity:.6` communicate the blocked state.
 - **Semitom/Tom no longer trigger a step by themselves** — `applyStep()` (moves `stepCount`, only
   called from `.dir-btn`) is split from `magButtonGuidance()` (readout-only, called from
-  `.mag-btn`, never touches `stepCount`). Keep that separation if you touch this flow.
+  `.mag-btn`, never touches `stepCount`). Keep that separation if you touch this flow. Both now
+  delegate the actual message text to a shared `describeCurrentStep()` (built from whatever
+  `stepCount` already holds): `applyStep()` calls it after moving `stepCount`; `magButtonGuidance()`
+  calls it instead of its old no-op whenever a step is already in progress (`stepCount !== 0`), so
+  switching Semitom↔Tom mid-interval **re-expresses the same already-applied distance in the newly
+  picked unit instantly** (e.g. 1 semitom becomes "0,5 tom" the moment Tom is clicked) without
+  moving the note or replaying audio — explicit user request ("a mensagem de feedback deve mudar
+  instataneamente para refletir a escolha nova"). If `stepCount === 0` (no step applied yet),
+  `magButtonGuidance()` still falls through to the old direction-prompt guidance text.
 - **Interval trainer +/- buttons are natively `disabled`** at the strip's ends (not just visually
   blocked) via `updateDirButtons()`, falling back to magnitude 1 (semitom) when no magnitude is
   chosen yet so a button is never disabled prematurely.

@@ -136,14 +136,14 @@
     justify-content: center;
     gap: 14px;
     width: 100%;
-    margin-top: 12px;
+    margin-top: 28px;
   }
   .cover p.sub .instrument-icons .instrument-item{
     display: inline-flex;
     flex-direction: column;
     align-items: center;
     gap: 6px;
-    transition: transform .6s ease, opacity .6s ease;
+    transition: transform .85s ease, opacity .85s ease;
     transform-origin: center center;
   }
   .cover p.sub .instrument-icons .instrument-item.icon-clicked{
@@ -171,14 +171,13 @@
   .cover p.sub .instrument-icons .instrument-item img[src$="cavaquinho.png"],
   .cover p.sub .instrument-icons .instrument-item img[src$="guitar.png"],
   .cover p.sub .instrument-icons .instrument-item img[src$="bandolim.png"]{
-    width: 88px;
+    width: 105.6px;
     aspect-ratio: 1 / 1;
     object-fit: contain;
     transition: transform .75s ease;
     transform-origin: center center;
   }
   @media (max-width: 620px){
-    .cover p.sub .instrument-icons{ margin-top: 28px; }
     .cover p.sub .instrument-icons .instrument-item img[src$="cavaquinho.png"],
     .cover p.sub .instrument-icons .instrument-item img[src$="guitar.png"],
     .cover p.sub .instrument-icons .instrument-item img[src$="bandolim.png"]{

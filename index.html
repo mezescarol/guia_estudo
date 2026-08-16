@@ -46,14 +46,28 @@
     container.classList.remove('has-clicked');
   }
 
+  var spinTimers = [];
+  function clearSpinTimers(){
+    spinTimers.forEach(function(id){ clearTimeout(id); });
+    spinTimers = [];
+  }
+
   function spin(i){
     if (i >= items.length) { running = false; return; }
     var item = items[i];
     item.classList.add('auto-spin');
-    setTimeout(function(){
+    spinTimers.push(setTimeout(function(){
       item.classList.remove('auto-spin');
-      setTimeout(function(){ spin(i + 1); }, GAP_MS);
-    }, HOLD_MS);
+      spinTimers.push(setTimeout(function(){ spin(i + 1); }, GAP_MS));
+    }, HOLD_MS));
+  }
+
+  // clique num ícone interrompe a sequência de entrada nos outros - impede que um ícone
+  // continue a girar por baixo do estado "selecionado" (escurecido) durante a transição de saída
+  function stopSequence(){
+    clearSpinTimers();
+    running = false;
+    Array.prototype.forEach.call(items, function(item){ item.classList.remove('auto-spin'); });
   }
 
   function startSequence(){
@@ -89,8 +103,8 @@
   });
 
   // mobile: ao tocar num ícone, ele e a legenda crescem 20% e os outros escurecem;
-  // navega assim que essa transição termina (600ms, igual à definida no CSS)
-  var CLICK_TRANSITION_MS = 600;
+  // navega assim que essa transição termina (850ms, igual à definida no CSS)
+  var CLICK_TRANSITION_MS = 850;
   Array.prototype.forEach.call(items, function(item){
     var link = item.querySelector('a');
     if (!link) return;
@@ -99,6 +113,7 @@
       var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       if (!isMobile || reduceMotion) return;
       e.preventDefault();
+      stopSequence();
       var href = link.href;
       container.classList.add('has-clicked');
       item.classList.add('icon-clicked');
