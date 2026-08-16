@@ -85,7 +85,7 @@
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
   }
-  .page{ max-width: 760px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 48px) clamp(80px, 10vw, 100px); }
+  .page{ max-width: 760px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 48px) clamp(80px, 10vw, 100px); display: flex; flex-direction: column; min-height: 100vh; }
 
   h1,h2,h3{
     font-family: 'Hoefler Text', 'Iowan Old Style', Palatino, 'Palatino Linotype', 'Book Antiqua', Georgia, serif;
@@ -109,8 +109,8 @@
   .staff span{ display:block; height:1px; background: currentColor; }
   .cover .eyebrow{
     font-family: ui-monospace, 'Cascadia Mono', 'SFMono-Regular', Consolas, monospace;
-    font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft);
-    margin-bottom: 10px; text-align: center;
+    font-size: clamp(9.5px, 0.83vw + 6.83px, 12px); letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft);
+    margin-bottom: 10px; text-align: center; white-space: nowrap;
   }
   .cover .eyebrow a{
     color: inherit;
@@ -152,7 +152,6 @@
     transform: translateY(-4px);
     transition: opacity .2s ease, transform .2s ease, visibility .2s ease;
   }
-  .cover p.sub .instrument-icons .instrument-item:hover .instrument-label,
   .cover p.sub .instrument-icons .instrument-item.auto-spin .instrument-label{
     opacity: 1;
     visibility: visible;
@@ -164,18 +163,25 @@
     width: 88px;
     height: 88px;
     object-fit: contain;
-    transition: transform .75s ease, width .32s ease, height .32s ease;
+    transition: transform .75s ease;
     transform-origin: center center;
   }
-  .cover p.sub .instrument-icons .instrument-item img[src$="cavaquinho.png"]:hover,
-  .cover p.sub .instrument-icons .instrument-item img[src$="guitar.png"]:hover,
-  .cover p.sub .instrument-icons .instrument-item img[src$="bandolim.png"]:hover,
   .cover p.sub .instrument-icons .instrument-item.auto-spin img[src$="cavaquinho.png"],
   .cover p.sub .instrument-icons .instrument-item.auto-spin img[src$="guitar.png"],
   .cover p.sub .instrument-icons .instrument-item.auto-spin img[src$="bandolim.png"]{
-    width: 100px;
-    height: 100px;
-    transform: rotate(45deg);
+    transform: rotate(45deg) scale(1.136);
+  }
+  @media (min-width: 621px){
+    .cover p.sub .instrument-icons .instrument-item:hover .instrument-label{
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .cover p.sub .instrument-icons .instrument-item img[src$="cavaquinho.png"]:hover,
+    .cover p.sub .instrument-icons .instrument-item img[src$="guitar.png"]:hover,
+    .cover p.sub .instrument-icons .instrument-item img[src$="bandolim.png"]:hover{
+      transform: rotate(45deg) scale(1.136);
+    }
   }
   .cover .byline{
     font-family: ui-monospace, 'Cascadia Mono', 'SFMono-Regular', Consolas, monospace;
@@ -210,6 +216,7 @@
   }
   .quick-nav-toggle.visible{ opacity: 1; pointer-events: auto; transform: translateY(0); }
   .quick-nav-toggle:hover{ background: var(--azulejo-ink); }
+  @media (min-width: 621px){ .mobile-only{ display: none !important; } }
   .quick-nav-panel{
     position: fixed; bottom: 90px; right: 20px; z-index: 50;
     background: var(--paper-raised); border: 1px solid var(--line); border-radius: 10px;
@@ -639,7 +646,7 @@
   .resources li{ padding:12px 16px; border:1px solid var(--line); border-radius:8px; background:var(--paper-raised); }
   .resources a{ font-family: ui-monospace, monospace; font-size: 0.84375rem; overflow-wrap: break-word; word-break: break-word; }
 
-  footer{ padding: 30px 0 10px; text-align:left; font-size: 0.78125rem; color: var(--ink-soft); font-family: Palatino, 'Book Antiqua', Georgia, serif; font-style: italic; }
+  footer{ margin-top: auto; padding: 30px 0 10px; text-align:left; font-size: 0.78125rem; color: var(--ink-soft); font-family: Palatino, 'Book Antiqua', Georgia, serif; font-style: italic; }
 
   .card, .technique{
     font-family: Optima, Candara, 'Segoe UI', sans-serif;

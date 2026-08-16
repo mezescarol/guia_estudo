@@ -1132,9 +1132,6 @@
       e.stopPropagation();
       if (panel.hidden) { openQuickNav(); } else { closeQuickNav(); }
     });
-    panel.querySelectorAll('a').forEach(function(a){
-      a.addEventListener('click', closeQuickNav);
-    });
     document.addEventListener('click', function(e){
       if (!panel.hidden && !panel.contains(e.target) && e.target !== toggle) {
         closeQuickNav();

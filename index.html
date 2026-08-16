@@ -77,6 +77,24 @@
       watch();
     }
   });
+
+  // mobile: ao tocar num ícone, gira e mostra a legenda pelo tempo mínimo antes de navegar
+  var CLICK_DELAY_MS = 1100;
+  Array.prototype.forEach.call(items, function(item){
+    var link = item.querySelector('a');
+    if (!link) return;
+    link.addEventListener('click', function(e){
+      var isMobile = window.matchMedia('(max-width: 620px)').matches;
+      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!isMobile || reduceMotion) return;
+      e.preventDefault();
+      var href = link.href;
+      item.classList.add('auto-spin');
+      setTimeout(function(){
+        window.location.href = href;
+      }, CLICK_DELAY_MS);
+    });
+  });
 })();
 </script>
 </body>

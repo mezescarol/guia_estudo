@@ -18,8 +18,40 @@
     <div class="toc-separator" aria-hidden="true"></div>
   </header>
 
+  <button id="quickNavToggle" class="quick-nav-toggle visible mobile-only" type="button" aria-expanded="false" aria-controls="quickNavPanel" aria-label="Abrir índice de secções">☰</button>
+  <div id="quickNavPanel" class="quick-nav-panel mobile-only" hidden>
+    <div class="quick-nav-pages" role="group" aria-label="Navegação">
+      <a href="index.html" class="quick-nav-page-btn">Página inicial</a>
+      <a href="cavaquinho.html" class="quick-nav-page-btn">Cavaquinho</a>
+      <a href="bandolim.html" class="quick-nav-page-btn">Bandolim</a>
+      <a href="#" class="quick-nav-page-btn">Guitarra</a>
+    </div>
+  </div>
+
   <footer>Feito por Carolina Mezes - Coimbra, agosto de 2026.<br>Utilizado material de apoio feito por Beatriz Ormonde e Daniel Madeira - Coimbra, Março de 2024</footer>
 </div>
 
+<script>
+(function(){
+  var toggle = document.getElementById('quickNavToggle');
+  var panel = document.getElementById('quickNavPanel');
+  function closeQuickNav(){
+    panel.hidden = true;
+    toggle.setAttribute('aria-expanded', 'false');
+  }
+  toggle.addEventListener('click', function(e){
+    e.stopPropagation();
+    var isOpen = !panel.hidden;
+    panel.hidden = isOpen;
+    toggle.setAttribute('aria-expanded', String(!isOpen));
+  });
+  document.addEventListener('click', function(e){
+    if (!panel.hidden && !panel.contains(e.target) && e.target !== toggle) closeQuickNav();
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape') closeQuickNav();
+  });
+})();
+</script>
 </body>
 </html>
