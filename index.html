@@ -6,7 +6,7 @@
 <title>Cordas - Guia de Estudo</title>
 <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body data-page="index">
 
 <div class="page">
 
@@ -19,9 +19,13 @@
     <p class="sub"> Escolha abaixo seu instrumento de eleição e vamos começar. <span class="instrument-icons"><span class="instrument-item"><a href="cavaquinho.html" aria-label="Abrir página de Cavaquinho"><img src="icons/cavaquinho.png" alt="Cavaquinho"></a><span class="instrument-label">Cavaquinho</span></span> <span class="instrument-item"><a href="bandolim.html" aria-label="Abrir página de Bandolim"><img src="icons/bandolim.png" alt="Bandolim"></a><span class="instrument-label">Bandolim</span></span> <span class="instrument-item"><a href="guitarra.html" aria-label="Abrir página de Guitarra"><img src="icons/guitar.png" alt="Guitarra"></a><span class="instrument-label">Guitarra</span></span></span></p>
   </header>
 
+  <button id="quickNavToggle" class="quick-nav-toggle visible" type="button" aria-expanded="false" aria-controls="quickNavPanel" aria-label="Abrir índice de secções">☰</button>
+  <div id="quickNavPanel" class="quick-nav-panel" hidden></div>
+
   <footer>Feito por Carolina Mezes - Coimbra, agosto de 2026.<br>Utilizado material de apoio feito por Beatriz Ormonde e Daniel Madeira - Coimbra, Março de 2024</footer>
 </div>
 
+<script src="quick-nav.js"></script>
 <script>
 (function(){
   var container = document.querySelector('.instrument-icons');
@@ -79,8 +83,8 @@
   });
 
   // mobile: ao tocar num ícone, ele e a legenda crescem 20% e os outros escurecem;
-  // navega assim que essa transição termina (300ms, igual à definida no CSS)
-  var CLICK_TRANSITION_MS = 300;
+  // navega assim que essa transição termina (600ms, igual à definida no CSS)
+  var CLICK_TRANSITION_MS = 600;
   Array.prototype.forEach.call(items, function(item){
     var link = item.querySelector('a');
     if (!link) return;

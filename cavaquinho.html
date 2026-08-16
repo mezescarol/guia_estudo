@@ -6,7 +6,7 @@
 <title>Cavaquinho - Guia de Estudo</title>
 <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body data-page="cavaquinho">
 
 <div class="page">
 
@@ -16,23 +16,8 @@
     <div class="toc-separator" aria-hidden="true"></div>
   </header>
 
-  <button id="quickNavToggle" class="quick-nav-toggle" type="button" aria-expanded="false" aria-controls="quickNavPanel" aria-label="Abrir índice de secções">☰</button>
-  <div id="quickNavPanel" class="quick-nav-panel" hidden>
-    <div class="quick-nav-pages" role="group" aria-label="Navegação">
-      <a href="index.html" class="quick-nav-page-btn">Página inicial</a>
-      <a href="#" class="quick-nav-page-btn">Cavaquinho</a>
-      <div class="quick-nav-submenu" aria-label="Navegação interna de Cavaquinho">
-        <a href="#afinacao">01 · Introdução</a>
-        <a href="#tons">02 · Distância</a>
-        <a href="#acorde">03 · Acordes</a>
-        <a href="#formas">04 · Técnica</a>
-        <a href="#construtor">05 · Prática</a>
-        <a href="#recursos">06 · Conteúdo extra</a>
-      </div>
-      <a href="bandolim.html" class="quick-nav-page-btn">Bandolim</a>
-      <a href="guitarra.html" class="quick-nav-page-btn">Guitarra</a>
-    </div>
-  </div>
+  <button id="quickNavToggle" class="quick-nav-toggle visible" type="button" aria-expanded="false" aria-controls="quickNavPanel" aria-label="Abrir índice de secções">☰</button>
+  <div id="quickNavPanel" class="quick-nav-panel" hidden></div>
   <div class="scroll-progress" role="progressbar" aria-label="Progresso de leitura" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
     <div class="scroll-progress-fill" id="scrollProgressFill"></div>
   </div>
@@ -285,6 +270,7 @@
   <footer>Feito por Carolina Mezes - Coimbra, agosto de 2026.<br>Utilizado material de apoio feito por Beatriz Ormonde e Daniel Madeira - Coimbra, Março de 2024</footer>
 </div>
 
+<script src="quick-nav.js"></script>
 <script src="audio-engine.js"></script>
 <script>
 (function(){
@@ -1113,51 +1099,6 @@
     document.addEventListener('keydown', function(e){
       if (e.key === 'Escape') closeAll(null);
     });
-  })();
-
-  // ---- índice rápido flutuante ----
-  (function(){
-    var toggle = document.getElementById('quickNavToggle');
-    var panel = document.getElementById('quickNavPanel');
-    var mainNav = document.querySelector('nav.toc');
-    var STORAGE_KEY = 'quickNavOpen';
-    function closeQuickNav(){
-      panel.hidden = true;
-      toggle.setAttribute('aria-expanded', 'false');
-      sessionStorage.removeItem(STORAGE_KEY);
-    }
-    function openQuickNav(){
-      panel.hidden = false;
-      toggle.setAttribute('aria-expanded', 'true');
-    }
-    toggle.addEventListener('click', function(e){
-      e.stopPropagation();
-      if (panel.hidden) { sessionStorage.setItem(STORAGE_KEY, '1'); openQuickNav(); } else { closeQuickNav(); }
-    });
-    document.addEventListener('click', function(e){
-      if (!panel.hidden && !panel.contains(e.target) && e.target !== toggle) {
-        closeQuickNav();
-      }
-    });
-    document.addEventListener('keydown', function(e){
-      if (e.key === 'Escape') closeQuickNav();
-    });
-    // mantém o menu aberto ao navegar para outra página pelo próprio menu
-    panel.querySelectorAll('a[href$=".html"]').forEach(function(link){
-      link.addEventListener('click', function(){ sessionStorage.setItem(STORAGE_KEY, '1'); });
-    });
-    if (sessionStorage.getItem(STORAGE_KEY) === '1') { openQuickNav(); }
-
-    if (mainNav && 'IntersectionObserver' in window) {
-      var observer = new IntersectionObserver(function(entries){
-        var navVisible = entries[0].isIntersecting;
-        toggle.classList.toggle('visible', !navVisible);
-        if (navVisible) { closeQuickNav(); }
-      });
-      observer.observe(mainNav);
-    } else {
-      toggle.classList.add('visible');
-    }
   })();
 
   // ---- barra de progresso de leitura ----
