@@ -1,12 +1,21 @@
-# AGENTS.md — Cavaquinho, Guia de Estudo
+# AGENTS.md — Guia de Estudo (Tuna)
 
 > This folder also holds unrelated tuna (student music group) files — sheet music, recordings
-> for "Tanto Mar", etc. This file documents only the `cavaquinho.html` study guide that lives
-> alongside them — a single self-contained page (inline CSS + vanilla JS, PT-PT) teaching
-> cavaquinho tuning, tons/semitons, chord theory, and chord-building, with live Web Audio
-> playback and generated SVG diagrams. **This folder is a plain directory, not a git repo.**
+> for "Tanto Mar", etc. This file documents the study-guide pages that live alongside them:
+> `cavaquinho.html` (complete, all 6 sections) and `bandolim.html` (in progress, sections 01-02
+> of 6 built this session) — pages sharing one external `styles.css` and one `audio-engine.js`,
+> each with its own inline `<script>` for page-specific logic (vanilla JS, PT-PT), teaching
+> instrument tuning, tons/semitons, and instrument-specific technique, with live Web Audio
+> playback and SVG/PNG diagrams. **This folder is a plain directory, not a git repo.**
+> Edits in this session were made **directly to the files in this directory** on explicit user
+> request — no scratchpad/Artifact-publishing round-trip was used for `bandolim.html` (unlike
+> the workflow documented just below for `cavaquinho.html`, which is from an earlier session —
+> verify it's still how the user wants `cavaquinho.html` handled before assuming it applies,
+> since `bandolim.html` work this session did NOT follow it).
 
-## File layout — three copies, keep them in sync
+## Cavaquinho (`cavaquinho.html`) — complete, all 6 sections
+
+### File layout — three copies, keep them in sync
 
 | File | Role |
 |---|---|
@@ -29,13 +38,13 @@ awk 'BEGIN{d=0}{if(!d){if($0~/<\/style>/)d=1;next}print}' "$SRC" > /tmp/body.txt
 cp "$OUT" "Tuna/cavaquinho.html"
 ```
 
-## Testing
+### Testing
 
 - Serve the scratchpad dir (`python -m http.server`), open via the Browser tool, verify with `javascript_exec` (`getBoundingClientRect`, `getComputedStyle`, SVG `getBBox`). **Not screenshots** — they don't composite in this environment.
 - **Environment bug, confirmed repeatedly:** in this Browser pane, `getComputedStyle()` on an element that changed state via a *click/attribute mutation* (background-color, `transform`) can return the stale pre-change value even after a delay — while `classList`, `hidden`, `matches()`, and geometry (`getBoundingClientRect`, `getBBox`) update correctly. Reproduced even on long-working code (`.mag-btn.active`), so it's the pane, not a regression. To verify a CSS rule is genuinely correct, apply the same class/attribute to a **freshly created, freshly appended element** and read its computed style — that reads correctly. Prefer position/geometry assertions over paint-property assertions when testing here.
 - `document.documentElement.scrollWidth === clientWidth` at 375px (mobile) and ≥1280px (desktop, **not** the `desktop` resize preset — it has returned narrow/inconsistent widths in this session; pass explicit `width/height`) is the standard no-overflow check used throughout.
 
-## Conventions established through iteration — don't casually undo
+### Conventions established through iteration — don't casually undo
 
 - **Font sizing:** everything in `<style>` is `rem`, root is `html{font-size:16px}` with `@media(max-width:620px){html{font-size:19.2px}}` (mobile +20%). Don't use CSS `zoom` — tried it, it doesn't reflow media queries/viewport correctly and causes overflow. `.eyebrow` is deliberately fixed `px` (immune to root scaling, on purpose). `.chord-name` still scales with the root like everything else, it's just a deliberately smaller base value (`1.15rem`, down from `1.6rem`) after user feedback it was too big — don't bump it back up.
 - **Text alignment:** paragraphs and `h1/h2/h3` are left-aligned at all widths (the mobile media query used to force-center headings; that override was removed on request). `.fret-caption` still centers at **all** widths (unrelated exception). Cover `h1`/`.eyebrow` always centered (separate, explicit exception, untouched by the above).
@@ -74,16 +83,136 @@ cp "$OUT" "Tuna/cavaquinho.html"
 - **Audio unlock (first-click latency fix):** `audioCtx` is created **eagerly at script load** (`var audioCtx = new (window.AudioContext||window.webkitAudioContext)();`), not lazily inside `getAudioCtx()` on first use like before — the heavy hardware/driver init this triggers happens while the page is just sitting there, not at the moment the user taps a string. A separate `unlockAudio()` is bound with `{capture:true, once:true, passive:true}` to `pointerdown`/`touchstart`/`mousedown`/`keydown` on `document`, so the *earliest* interaction anywhere on the page (not necessarily the string/key itself) kicks off `resume()` a beat sooner via the capture phase (fires before the target element's own bubble-phase click handler). **Audio context priming:** on the first `unlockAudio()` call, a near-silent zero-gain oscillator blip plays for 1ms to warm up the audio hardware — this dramatically reduces latency on subsequent clicks/taps on iOS Safari and some Android browsers. The blip is inaudible (0 volume) and happens only once. This was reported as a real, noticeable delay on mobile specifically — don't revert to lazy `if (!audioCtx) audioCtx = new AudioContext()` inside `getAudioCtx()`, that's the exact pattern that caused it. Don't remove the oscillator priming from `unlockAudio()` unless the user confirms latency is no longer an issue.
 - **Resource links (section 06, "Conteúdo extra"):** the `.resource-links` list items have links styled with `display:block; padding:12px; text-decoration:none; border-radius:4px` so the entire padded box is clickable/tappable, not just the text. Hover/focus adds a background color change (`var(--line)`) and underline. This makes the hit target much larger on mobile and improves UX for tap interactions.
 
-## Known open requests — not yet implemented
+### Known open requests — not yet implemented
 
 1. Replace "Já, já falaremos dos acordes menores." with "Cada uma delas possui sua própria forma para montar acordes menores." (section `#formas`).
 2. Fretboard diagrams should never show a casa past 12 — currently `base = minFret - 1` has no ceiling, so high chords can render casas 13/14 instead of truncating at the neck end.
 3. **Bug:** Sol menor + Barra shows "não é possível" (`fMajor===0` blocks). It's actually playable at casas 11–12: when `fMajor===0`, use `fMajor+12` instead of blocking (`dots2` becomes `[12,12,11,12]`).
 
-## Domain facts (verified — re-derive, don't guess, before touching)
+### Domain facts (verified — re-derive, don't guess, before touching)
 
 Tuning Sol-Sol-Si-Ré → `OPEN=[7,7,11,2]` (C=0), `OPEN_FREQS=[196.00,196.00,246.94,146.83]`, `FRET_MAX=12`. Barra/Escadinha/Pirete × maior/menor each have their own derived fret-offset formula per string in `renderFret()`. User's "corda 1–4" naming is reversed vs. the code array.
 
-## Style
+### Style
 
 PT-PT, informal "tu". Some UI prompts ("Selecione…") were typed verbatim by the user in formal register — leave as-is, don't fix to "tu".
+
+## Bandolim (`bandolim.html`) — in progress, sections 01-02 of 6 built
+
+Single file, edited directly in this directory (no scratchpad copy, no Artifact publish step
+this session). Shares `styles.css` and `audio-engine.js` with `cavaquinho.html` — changes to
+either shared file affect both pages, so check `cavaquinho.html` still renders correctly after
+touching them. The nav skeleton (header, quick-nav panel with all 6 anchors) already existed
+before this session; sections `#afinacao` (01) and `#tons` (02) were built and are functional;
+`#acorde` (03), `#formas` (04), `#construtor` (05), `#recursos` (06) are still just anchors with
+no `<section>` behind them yet.
+
+### Hard rule from the user — don't reintroduce cavaquinho parallels
+
+`bandolim.html`'s prose must read as **100% independent** of `cavaquinho.html` — the user
+explicitly rejected drafts that compared the two instruments ("diferente do cavaquinho...",
+etc.). The page should make sense to someone who never opens `cavaquinho.html`. This applies to
+future sections too, not just the ones already built.
+
+### Bandolim is a melodic instrument — don't force a chord-shapes structure onto it
+
+Also explicit from the user: unlike the cavaquinho (which is strummed/rasgueado and built its
+whole `#formas`/`#construtor` pair around 3 movable chord shapes - Barra/Escadinha/Pirete), the
+bandolim is tuned in fifths like a violin and is primarily a **melodic** instrument (palheta,
+scales, trémulo) - chords are secondary, not the throughline. **When building `#formas` (04),
+do not clone the Barra/Escadinha/Pirete pattern or center it on chords.** The direction agreed
+in conversation (not yet implemented, confirm with the user before committing to it):
+- **03 (`#acorde`)**: reconsider renaming away from "Acordes" - the natural next step after
+  tons/semitons for a melodic instrument is **building scales** (maior/menor from tons e
+  semitons), not chord formulas. The quick-nav label still says "03 · Acordes" - update it
+  together with whatever this section actually becomes, don't leave a mismatched label.
+- **04 (`#formas`, "Técnica")**: pega da palheta, palhetada alternada, trémulo (the
+  instrument's signature sustain technique - same physical reasoning as the cavaquinho's fast
+  ADSR decay, notes die fast so tremolo re-triggers them), posições da mão esquerda/escalas.
+  Not chord shapes.
+- **05 (`#construtor`, "Prática")**: probably an interactive scale/position visualizer on the
+  fretboard (tónica + modo → notes highlighted), not a chord builder.
+- **06 (`#recursos`)**: same link-list style as cavaquinho's, bandolim/mandolin-specific
+  resources (trémulo, escalas, choro repertoire).
+
+### `#afinacao` (01 · Introdução) - what was built
+
+Same visual format as cavaquinho's section 01 (kicker, `<h2>`, parts-row + text, a "duas notas"
+card, then an `<h2>Afinação</h2>` with a `.grid2` of two cards) but content is bandolim-specific,
+not copy-pasted text:
+- Cabeça: 8 tarraxas, in 4 pares (ordens).
+- Braço: 17-24 casas (not 12-17 like cavaquinho).
+- Corpo: caixa de ressonância.
+- "Duas notas" card: strings come in 4 unison-tuned pairs (always play both together); played
+  with palheta only, never fingerstyle.
+- Afinação: **Sol - Ré - Lá - Mi (G3-D4-A4-E5)**, perfect fifths, same as a violin - ascending
+  low-to-high, **not re-entrant** like the cavaquinho's G-G-B-D (worth remembering if a future
+  section needs per-string fret math: no special-casing needed here, string N+1 is always a
+  clean 5th above string N).
+
+**Icon swap (this session's specific ask):** the user asked to use `./icons/bandolim.png`
+instead of a hand-drawn instrument SVG (cavaquinho.html draws its instrument by hand in inline
+SVG `<path>`s - nobody attempted that for the bandolim, the PNG was used instead). The PNG is
+used **twice**, both times inside `.instrument-diagram` wrappers: once in the descriptive
+parts-row, once inside `#bandolimCard` (the draggable "arrasta para dedilhar" card). The
+separate `.strings-diagram` (the small 4-line clickable open-strings diagram) is still a real
+inline SVG, not a PNG - only the full-instrument illustration was swapped for the icon.
+
+**`#bandolimCard` drag-to-strum - do NOT call the global `playStrum()`/`playStrumReverse()`
+here.** Those two functions live in the shared `audio-engine.js` and have the cavaquinho's open
+frequencies hardcoded (`[196.00, 196.00, 246.94, 146.83]`) - calling them from bandolim.html
+would play the wrong instrument's notes. Instead there's a small dedicated IIFE (first
+`<script>` block after `audio-engine.js` in `bandolim.html`) with a local
+`BANDOLIM_OPEN_FREQS = [196.00, 293.66, 440.00, 659.25]` array, using the generic
+`playStrumSequence(freqs)` (also shared, but freq-agnostic) instead. If a future section needs
+to play the bandolim's open strings again, reuse `BANDOLIM_OPEN_FREQS` or extract it to a wider
+scope rather than re-deriving the numbers.
+
+### `#tons` (02 · Tons e semitons) - copy-pasted verbatim from cavaquinho.html, on request
+
+This section (piano SVG, chromatic strip/interval trainer, tooltip system) is pure music theory
+with no instrument-specific content, so it was copied as-is from `cavaquinho.html`'s `#tons`
+section and its supporting JS (`NOTE_DATA`/`NOTES`/`FREQS`/`SHARP`, `mod12`, `createButtonGrid`,
+the whole strip/interval-trainer state machine, the tooltip delegation logic) - **this is the
+one place in `bandolim.html` that's intentionally identical to cavaquinho, because the theory
+itself is instrument-independent, not because of the "no parallels" rule being broken.** If
+`cavaquinho.html`'s `#tons` section or its JS changes later, consider whether the same fix
+applies here too (they're now two independent copies, not shared code - no automatic sync).
+
+### Script structure in `bandolim.html` (bottom of `<body>`, in order)
+
+1. `<script src="audio-engine.js"></script>`
+2. IIFE: `#bandolimCard` drag-to-strum (self-contained, only needs `#bandolimCard` in the DOM).
+3. IIFE: everything from `#tons` (global `.string-key`/`.piano-key` click delegation, the
+   NOTE_DATA constants, `createButtonGrid`, the chromatic strip/interval trainer, the tooltip
+   accessibility system). **This is the natural place to extend when building sections 03-05** -
+   any future scale-builder or fretboard visualizer will likely need the same constants/helpers
+   already declared here rather than a fourth overlapping IIFE.
+4. IIFE: the original quick-nav toggle (pre-existing before this session, untouched).
+
+### Shared `styles.css` changes made this session (verify cavaquinho.html still looks right)
+
+- `.instrument-diagram svg{...}` was SVG-only; extended to `.instrument-diagram svg,
+  .instrument-diagram img{...}` so the PNG icon sizes the same way the old SVGs did.
+- Added `.instrument-parts-row` as an **alias** of `.cavaquinho-parts-row` (identical rules,
+  both selectors listed together everywhere that class appears) so `bandolim.html`'s markup
+  doesn't carry a cavaquinho-named class. If the parts-row layout is tweaked later, update both
+  selectors together or they'll drift.
+- Added `#bandolimCard` alongside `#cavaquinhoCard` in the `cursor:ew-resize`/`touch-action`
+  rule and the `strumHint` entrance-animation rule, so the draggable card gets the same
+  affordance/animation cavaquinho's does.
+
+### Not yet done / open for the next agent
+
+1. Sections 03-06 (`#acorde`, `#formas`, `#construtor`, `#recursos`) - see the melodic-instrument
+   direction above; get explicit user sign-off on the 03 rename before building it.
+2. Quick-nav submenu labels still read "03 · Acordes" / "04 · Técnica" verbatim from the
+   cavaquinho-derived skeleton - revisit once 03's actual content/name is decided.
+3. **Visual verification of `#afinacao` has NOT happened.** The Browser tool in this session
+   could only render `bandolim.html` as a static snapshot (file is outside the tool's project
+   folder) and couldn't screenshot or run `javascript_exec` against it - so the PNG icon's actual
+   rendered size/aspect ratio inside `.instrument-diagram` (`max-width:170px`/`113px`) and the
+   drag-to-strum interaction have only been verified by reading code, not by seeing them render.
+   Confirm in a real browser before considering section 01 finished.
+4. `icons/bandolim.png`'s intrinsic dimensions/aspect ratio were never inspected - if it renders
+   oddly cropped or stretched at the diagram sizes, that's the first thing to check.

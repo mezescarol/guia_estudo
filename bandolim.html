@@ -34,9 +34,407 @@
     </div>
   </div>
 
+  <section id="afinacao">
+    <p class="kicker">01 · Introdução</p>
+    <h2>O bandolim</h2>
+    <div class="instrument-parts-row">
+      <div class="instrument-diagram">
+        <img src="./icons/bandolim.png" alt="Ilustração do bandolim">
+      </div>
+      <div style="flex:1 1 260px;">
+        <p><strong>A cabeça</strong> é a primeira parte do instrumento, onde estão os <span class="tooltip" tabindex="0" data-tooltip="Carrilhões ou tarraxas são as peças metálicas que giramos para tensionar ou afrouxar as cordas.">carrilhões</span> responsáveis pela afinação das cordas. São 8, dispostos em <span class="tooltip" tabindex="0" data-tooltip="As 2 cordas de um par terão a mesma afinação entre si, útil para o trémolo">4 pares</span>.</p>
+        <p><strong>O braço</strong> é a parte superior do instrumento e possui <strong>entre 17 e 24 <span class="tooltip" tabindex="0" data-tooltip="São os espaços entre dois trastes (barras metálicas) onde pressionamos as cordas para alterar a nota.">casas</span></strong>.</p>
+        <p><strong>O corpo</strong> é a parte inferior, composta pela <strong><span class="tooltip" tabindex="0" data-tooltip="Um corpo oco feito de madeira que serve como amplificador natural do som.">caixa de ressonância</span></strong>, responsável pela sonorização do instrumento.</p>
+      </div>
+    </div>
+    <div class="card" style="margin-top:1.6em;">
+      <p style="margin:0 0 12px;"><strong>Duas notas para se ter em atenção:</strong></p>
+      <ol style="margin:0; padding-left:20px; color:var(--ink-soft); display:flex; flex-direction:column; gap:8px;">
+        <li>Cada par é tocado em uníssono, ou seja, as 2 cordas ao mesmo tempo;</li>
+        <li>toca-se sempre com palheta, não se dedilha diretamente com os dedos.</li>
+      </ol>
+    </div>
+    <h2 style="margin-top:1.6em;">Afinação</h2>
+    <p>O bandolim é afinado em <span class="tooltip" tabindex="0" data-tooltip="Cada corda está afinada 7 semitons (ou 3,5 tons) acima da corda anterior. Para perceber mais, veja o tópico sobre tons e semitons">quintas justas</span>: <strong style="white-space:nowrap;">Sol - Ré - Lá - Mi</strong> <span style="white-space:nowrap;">(G - D - A - E).</span></p>
+    <div class="grid2">
+    <div class="card">
+      <div class="strings-diagram">
+        <svg viewBox="0 0 220 220" role="img" aria-label="Diagrama das 4 ordens de cordas soltas do bandolim, cada uma com um par de cordas em uníssono: Sol, Ré, Lá, Mi">
+          <line x1="25" y1="18" x2="25" y2="206" stroke="currentColor" stroke-width="2.6" opacity=".85"/>
+          <line x1="35" y1="18" x2="35" y2="206" stroke="currentColor" stroke-width="2.6" opacity=".85"/>
+          <line x1="71" y1="18" x2="71" y2="206" stroke="currentColor" stroke-width="2" opacity=".7"/>
+          <line x1="81" y1="18" x2="81" y2="206" stroke="currentColor" stroke-width="2" opacity=".7"/>
+          <line x1="117" y1="18" x2="117" y2="206" stroke="currentColor" stroke-width="1.5" opacity=".6"/>
+          <line x1="127" y1="18" x2="127" y2="206" stroke="currentColor" stroke-width="1.5" opacity=".6"/>
+          <line x1="163" y1="18" x2="163" y2="206" stroke="currentColor" stroke-width="1" opacity=".5"/>
+          <line x1="173" y1="18" x2="173" y2="206" stroke="currentColor" stroke-width="1" opacity=".5"/>
+          <line class="string-key" data-freq="196.00" data-unison="true" x1="30" y1="18" x2="30" y2="206" stroke="transparent" stroke-width="20"/>
+          <line class="string-key" data-freq="293.66" data-unison="true" x1="76" y1="18" x2="76" y2="206" stroke="transparent" stroke-width="20"/>
+          <line class="string-key" data-freq="440.00" data-unison="true" x1="122" y1="18" x2="122" y2="206" stroke="transparent" stroke-width="20"/>
+          <line class="string-key" data-freq="659.25" data-unison="true" x1="168" y1="18" x2="168" y2="206" stroke="transparent" stroke-width="20"/>
+          <text x="30" y="12" text-anchor="middle" font-size="12" fill="currentColor" font-family="ui-monospace,monospace">Sol</text>
+          <text x="76" y="12" text-anchor="middle" font-size="12" fill="currentColor" font-family="ui-monospace,monospace">Ré</text>
+          <text x="122" y="12" text-anchor="middle" font-size="12" fill="currentColor" font-family="ui-monospace,monospace">Lá</text>
+          <text x="168" y="12" text-anchor="middle" font-size="12" fill="currentColor" font-family="ui-monospace,monospace">Mi</text>
+          <circle cx="25" cy="206" r="4" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <circle cx="35" cy="206" r="4" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <circle cx="71" cy="206" r="4" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <circle cx="81" cy="206" r="4" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <circle cx="117" cy="206" r="4" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <circle cx="127" cy="206" r="4" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <circle cx="163" cy="206" r="4" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <circle cx="173" cy="206" r="4" fill="none" stroke="currentColor" stroke-width="1.4"/>
+        </svg>
+      </div>
+      <p class="strum-hint">toca para tocar uma nota</p>
+    </div>
+    <div class="card" id="bandolimCard">
+      <div class="instrument-diagram">
+        <img src="./icons/bandolim.png" alt="Ilustração do bandolim">
+      </div>
+      <p class="strum-hint">⇆ arrasta para dedilhar</p>
+    </div>
+    </div>
+    <p style="margin-top:1.6em;">A afinação em quintas do bandolim é <span class="tooltip" tabindex="0" data-tooltip="O bandolim tem a mesma afinação do violino">diferente da maioria</span> dos instrumentos de cordas dedilhadas. Isso influencia diretamente a forma como tocamos escalas e melodias.</p>
+  </section>
+
+  <section id="tons">
+    <p class="kicker">02 · Teoria</p>
+    <h2>Tons e semitons</h2>
+    <p>Fica mais fácil de perceber este tópico se olharmos para as teclas de um piano.</p>
+    <p>Vejamos abaixo uma <span class="tooltip" tabindex="0" data-tooltip="Uma escala que contém 12 notas, com intervalos de semitons entre elas.">escala cromática</span> qualquer.</p>
+    <div class="card">
+      <div class="piano-diagram">
+        <svg viewBox="0 0 320 184" role="img" aria-label="Teclado de piano com uma oitava, mostrando a escala de Dó maior: Dó, Ré, Mi, Fá, Sol, Lá, Si, Dó">
+          <text x="20" y="9" text-anchor="middle" font-size="7.5" fill="currentColor" opacity=".35" font-family="ui-monospace,monospace">1</text>
+          <text x="40" y="9" text-anchor="middle" font-size="7.5" fill="currentColor" opacity=".35" font-family="ui-monospace,monospace">2</text>
+          <text x="60" y="9" text-anchor="middle" font-size="7.5" fill="currentColor" opacity=".35" font-family="ui-monospace,monospace">3</text>
+          <text x="80" y="9" text-anchor="middle" font-size="7.5" fill="currentColor" opacity=".35" font-family="ui-monospace,monospace">4</text>
+          <text x="100" y="9" text-anchor="middle" font-size="7.5" fill="currentColor" opacity=".35" font-family="ui-monospace,monospace">5</text>
+          <text x="140" y="9" text-anchor="middle" font-size="7.5" fill="currentColor" opacity=".35" font-family="ui-monospace,monospace">6</text>
+          <text x="160" y="9" text-anchor="middle" font-size="7.5" fill="currentColor" opacity=".35" font-family="ui-monospace,monospace">7</text>
+          <text x="180" y="9" text-anchor="middle" font-size="7.5" fill="currentColor" opacity=".35" font-family="ui-monospace,monospace">8</text>
+          <text x="200" y="9" text-anchor="middle" font-size="7.5" fill="currentColor" opacity=".35" font-family="ui-monospace,monospace">9</text>
+          <text x="220" y="9" text-anchor="middle" font-size="7.5" fill="currentColor" opacity=".35" font-family="ui-monospace,monospace">10</text>
+          <text x="240" y="9" text-anchor="middle" font-size="7.5" fill="currentColor" opacity=".35" font-family="ui-monospace,monospace">11</text>
+          <text x="260" y="9" text-anchor="middle" font-size="7.5" fill="currentColor" opacity=".35" font-family="ui-monospace,monospace">12</text>
+          <rect class="piano-key" data-freq="130.81" data-note="Dó3" x="0" y="24" width="40" height="140" fill="var(--paper-raised)" stroke="currentColor" stroke-width="1.5"/>
+          <rect class="piano-key" data-freq="146.83" data-note="Ré3" x="40" y="24" width="40" height="140" fill="var(--paper-raised)" stroke="currentColor" stroke-width="1.5"/>
+          <rect class="piano-key" data-freq="164.81" data-note="Mi3" x="80" y="24" width="40" height="140" fill="var(--paper-raised)" stroke="currentColor" stroke-width="1.5"/>
+          <rect class="piano-key" data-freq="174.61" data-note="Fá3" x="120" y="24" width="40" height="140" fill="var(--paper-raised)" stroke="currentColor" stroke-width="1.5"/>
+          <rect class="piano-key" data-freq="196.00" data-note="Sol3" x="160" y="24" width="40" height="140" fill="var(--paper-raised)" stroke="currentColor" stroke-width="1.5"/>
+          <rect class="piano-key" data-freq="220.00" data-note="Lá3" x="200" y="24" width="40" height="140" fill="var(--paper-raised)" stroke="currentColor" stroke-width="1.5"/>
+          <rect class="piano-key" data-freq="246.94" data-note="Si3" x="240" y="24" width="40" height="140" fill="var(--paper-raised)" stroke="currentColor" stroke-width="1.5"/>
+          <rect class="piano-key" data-freq="261.63" data-note="Dó4" x="280" y="24" width="40" height="140" fill="var(--paper-raised)" stroke="currentColor" stroke-width="1.5"/>
+          <rect class="piano-key" data-freq="138.59" data-note="Dó#3" x="28" y="24" width="24" height="85" fill="currentColor"/>
+          <rect class="piano-key" data-freq="155.56" data-note="Ré#3" x="68" y="24" width="24" height="85" fill="currentColor"/>
+          <rect class="piano-key" data-freq="185.00" data-note="Fá#3" x="148" y="24" width="24" height="85" fill="currentColor"/>
+          <rect class="piano-key" data-freq="207.65" data-note="Sol#3" x="188" y="24" width="24" height="85" fill="currentColor"/>
+          <rect class="piano-key" data-freq="233.08" data-note="Lá#3" x="228" y="24" width="24" height="85" fill="currentColor"/>
+          <text x="40" y="102" text-anchor="middle" font-size="8" fill="var(--paper)" font-family="ui-monospace,monospace">Dó#</text>
+          <text x="80" y="102" text-anchor="middle" font-size="8" fill="var(--paper)" font-family="ui-monospace,monospace">Ré#</text>
+          <text x="160" y="102" text-anchor="middle" font-size="8" fill="var(--paper)" font-family="ui-monospace,monospace">Fá#</text>
+          <text x="200" y="102" text-anchor="middle" font-size="8" fill="var(--paper)" font-family="ui-monospace,monospace">Sol#</text>
+          <text x="240" y="102" text-anchor="middle" font-size="8" fill="var(--paper)" font-family="ui-monospace,monospace">Lá#</text>
+          <text x="20" y="162" text-anchor="middle" font-size="11" fill="currentColor" font-family="ui-monospace,monospace">Dó</text>
+          <text x="60" y="162" text-anchor="middle" font-size="11" fill="currentColor" font-family="ui-monospace,monospace">Ré</text>
+          <text x="100" y="162" text-anchor="middle" font-size="11" fill="currentColor" font-family="ui-monospace,monospace">Mi</text>
+          <text x="140" y="162" text-anchor="middle" font-size="11" fill="currentColor" font-family="ui-monospace,monospace">Fá</text>
+          <text x="180" y="162" text-anchor="middle" font-size="11" fill="currentColor" font-family="ui-monospace,monospace">Sol</text>
+          <text x="220" y="162" text-anchor="middle" font-size="11" fill="currentColor" font-family="ui-monospace,monospace">Lá</text>
+          <text x="260" y="162" text-anchor="middle" font-size="11" fill="currentColor" font-family="ui-monospace,monospace">Si</text>
+          <text x="300" y="162" text-anchor="middle" font-size="11" fill="currentColor" font-family="ui-monospace,monospace">Dó</text>
+        </svg>
+      </div>
+    </div>
+    <p style="margin-top:1.6em; margin-bottom:0;"><strong class="tooltip" tabindex="0" data-tooltip="Pode ser chamado também de meio tom, apesar de &quot;semitom&quot; ser a forma mais usual em teoria musical.">Semitom</strong>: subida ou descida de 1 tecla.</p>
+    <p><strong class="tooltip" tabindex="0" data-tooltip="É formado por 2 semitons consecutivos.">1 tom</strong>: subida ou descida de 2 teclas.</p>
+    <p>Entre as notas <strong>[Mi, Fá]</strong> e <strong>[Si, Dó]</strong> não há <span class="tooltip" tabindex="0" data-tooltip="A diferença entre ambos merece uma nota à parte. Por agora, pensa que são, essencialmente, a mesma coisa.">sustenidos/bemóis</span>. Repara que no teclado acima essas duas notas ficam juntinhas, sem tecla preta entre elas.</p>
+    <div class="card">
+      <p style="margin-top:0;">Selecione uma nota e experimente alterar os botões abaixo.</p>
+      <div class="strip" id="strip"></div>
+      <div class="interval-controls">
+        <button class="mag-btn" data-mag="1">Semitom</button>
+        <button class="mag-btn" data-mag="2">Tom</button>
+        <button class="dir-btn" data-dir="down" aria-label="Descer">−</button>
+        <button class="dir-btn" data-dir="up" aria-label="Subir">+</button>
+        <button type="button" class="reset-interval-btn" id="resetIntervalBtn">Limpar</button>
+      </div>
+      <p class="readout" id="intervalReadout"></p>
+    </div>
+  </section>
+
   <footer>Feito por Carolina Mezes - Coimbra, agosto de 2026.<br>Utilizado material de apoio feito por Beatriz Ormonde e Daniel Madeira - Coimbra, Março de 2024</footer>
 </div>
 
+<script src="audio-engine.js"></script>
+<script>
+(function(){
+  var BANDOLIM_OPEN_FREQS = [196.00, 293.66, 440.00, 659.25]; // Sol - Ré - Lá - Mi
+  var bandolimCard = document.getElementById('bandolimCard');
+  var dragStartX = null;
+  bandolimCard.addEventListener('pointerdown', function(e){
+    dragStartX = e.clientX;
+    if (bandolimCard.setPointerCapture) {
+      try { bandolimCard.setPointerCapture(e.pointerId); } catch(err) {}
+    }
+  });
+  bandolimCard.addEventListener('pointerup', function(e){
+    if (dragStartX === null) return;
+    var deltaX = e.clientX - dragStartX;
+    dragStartX = null;
+    if (Math.abs(deltaX) < 30) { return; }
+    if (deltaX > 0) { playStrumSequence(BANDOLIM_OPEN_FREQS); } else { playStrumSequence(BANDOLIM_OPEN_FREQS.slice().reverse()); }
+  });
+  bandolimCard.addEventListener('pointercancel', function(){ dragStartX = null; });
+})();
+</script>
+<script>
+(function(){
+  document.addEventListener('click', function(e){
+    var key = e.target.closest && e.target.closest('.string-key, .piano-key');
+    if (!key || !key.dataset || !key.dataset.freq) return;
+    var freq = parseFloat(key.dataset.freq);
+    var now = getAudioCtx().currentTime;
+    playStrumNoteAt(freq, now);
+    if (key.dataset.unison === 'true') { playStrumNoteAt(freq, now); }
+  });
+
+  // ---- Constantes de notas (fonte única) ----
+  var NOTE_DATA = [
+    { name: 'Dó',   freq: 130.81, isSharp: false },
+    { name: 'Dó#',  freq: 138.59, isSharp: true },
+    { name: 'Ré',   freq: 146.83, isSharp: false },
+    { name: 'Ré#',  freq: 155.56, isSharp: true },
+    { name: 'Mi',   freq: 164.81, isSharp: false },
+    { name: 'Fá',   freq: 174.61, isSharp: false },
+    { name: 'Fá#',  freq: 185.00, isSharp: true },
+    { name: 'Sol',  freq: 196.00, isSharp: false },
+    { name: 'Sol#', freq: 207.65, isSharp: true },
+    { name: 'Lá',   freq: 220.00, isSharp: false },
+    { name: 'Lá#',  freq: 233.08, isSharp: true },
+    { name: 'Si',   freq: 246.94, isSharp: false }
+  ];
+
+  var NOTES = NOTE_DATA.map(function(n) { return n.name; });
+  var FREQS = NOTE_DATA.map(function(n) { return n.freq; });
+  var SHARP = NOTE_DATA.map(function(n) { return n.isSharp; });
+
+  function mod12(n){ return ((n % 12) + 12) % 12; }
+
+  // ---- Helper para criar grids de botões ----
+  function createButtonGrid(container, items, options) {
+    options = options || {};
+    var baseClass = options.baseClass || 'btn';
+    var getExtraClass = options.getExtraClass || function() { return ''; };
+    var onClick = options.onClick;
+
+    items.forEach(function(item, i) {
+      var btn = document.createElement('button');
+      btn.className = baseClass + getExtraClass(i, item);
+      btn.textContent = item;
+      if (onClick) btn.addEventListener('click', function() { onClick(i, item); });
+      container.appendChild(btn);
+    });
+  }
+
+  // ---- chromatic strip (Dó3 a Dó4, 13 posições, sem wrap) ----
+  var STRIP_NOTES = NOTES;
+  var STRIP_FREQS = FREQS;
+  var STRIP_SHARP = SHARP;
+  var STRIP_MAX = STRIP_NOTES.length - 1;
+  var strip = document.getElementById('strip');
+  var current = null;
+  var resultIndex = null;
+
+  createButtonGrid(strip, STRIP_NOTES, {
+    baseClass: 'note-btn',
+    getExtraClass: function(i) { return STRIP_SHARP[i] ? ' sharp' : ''; },
+    onClick: function(i) { setCurrent(i); }
+  });
+
+  function renderStrip(){
+    Array.prototype.forEach.call(strip.children, function(b, i){
+      b.classList.toggle('active', current !== null && i === current);
+      b.classList.toggle('target', resultIndex !== null && i === resultIndex && i !== current);
+    });
+  }
+
+  var dirUpBtn = document.querySelector('.dir-btn[data-dir="up"]');
+  var dirDownBtn = document.querySelector('.dir-btn[data-dir="down"]');
+  function updateDirButtons(){
+    if (current === null) {
+      dirUpBtn.disabled = false;
+      dirDownBtn.disabled = false;
+      return;
+    }
+    var mag = stepMagnitude || 1;
+    var pos = current + stepCount;
+    dirUpBtn.disabled = (pos + mag) > STRIP_MAX;
+    dirDownBtn.disabled = (pos - mag) < 0;
+  }
+
+  var readout = document.getElementById('intervalReadout');
+  function setCurrent(i){
+    current = i;
+    resultIndex = null;
+    stepDirection = null;
+    stepMagnitude = null;
+    stepCount = 0;
+    document.querySelectorAll('.dir-btn, .mag-btn').forEach(function(b){ b.classList.remove('active'); });
+    renderStrip();
+    updateDirButtons();
+    readout.innerHTML = 'Nota selecionada: <strong>' + STRIP_NOTES[current] + '</strong>';
+    playStrumNoteAt(STRIP_FREQS[current], getAudioCtx().currentTime);
+  }
+
+  var stepDirection = null;
+  var stepMagnitude = null;
+  var stepCount = 0;
+  function applyStep(){
+    if (current === null) {
+      readout.innerHTML = 'Selecione primeiro uma nota';
+      return;
+    }
+    if (stepDirection !== null && stepMagnitude === null) {
+      readout.innerHTML = 'Escolha entre semitom e tom também';
+      return;
+    }
+    if (stepMagnitude !== null && stepDirection === null) {
+      readout.innerHTML = 'Escolha o sentido que vamos percorrer: + ou -';
+      return;
+    }
+    if (stepDirection === null || stepMagnitude === null) {
+      readout.innerHTML = 'Selecione [subir, descer] e [semitom, 1 tom].';
+      return;
+    }
+    var delta = stepDirection === 'up' ? stepMagnitude : -stepMagnitude;
+    var attempted = stepCount + delta;
+    var blocked = (current + attempted) < 0 || (current + attempted) > STRIP_MAX;
+    if (!blocked) {
+      stepCount = attempted;
+      playStrumNoteAt(STRIP_FREQS[current + stepCount], getAudioCtx().currentTime);
+    }
+    var to = current + stepCount;
+    var absCount = Math.abs(stepCount);
+    var message;
+    if (stepCount === 0) {
+      message = 'De volta à nota original: <strong>' + STRIP_NOTES[current] + '</strong>';
+    } else {
+      var dirLabel = stepCount > 0 ? 'Subir' : 'Descer';
+      var unitLabel = stepMagnitude === 2 ? 'tom' : 'semitom';
+      var unitCount = stepMagnitude === 2 ? absCount / 2 : absCount;
+      var unitCountDisplay = Number.isInteger(unitCount) ? String(unitCount) : unitCount.toFixed(1).replace('.', ',');
+      var magPhrase = unitCountDisplay + ' ' + unitLabel + (unitCount === 1 ? '' : 's');
+      message = dirLabel + ' ' + magPhrase + ' a partir de <strong>' + STRIP_NOTES[current] + '</strong> -> <strong>' + STRIP_NOTES[to] + '</strong>';
+    }
+    readout.innerHTML = message;
+    resultIndex = to;
+    renderStrip();
+    updateDirButtons();
+  }
+  function magButtonGuidance(){
+    if (current === null) {
+      readout.innerHTML = 'Selecione primeiro uma nota';
+      return;
+    }
+    if (stepDirection === null) {
+      readout.innerHTML = 'Escolha o sentido que vamos percorrer: + ou -';
+    }
+  }
+  function flashActive(btn){
+    btn.classList.add('active');
+    if (btn._flashTimeout) { clearTimeout(btn._flashTimeout); }
+    btn._flashTimeout = setTimeout(function(){
+      btn.classList.remove('active');
+    }, 220);
+  }
+  document.querySelectorAll('.dir-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      stepDirection = btn.dataset.dir;
+      flashActive(btn);
+      applyStep();
+    });
+  });
+  document.querySelectorAll('.mag-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      stepMagnitude = parseInt(btn.dataset.mag, 10);
+      if (current !== null) {
+        document.querySelectorAll('.mag-btn').forEach(function(b){ b.classList.toggle('active', b === btn); });
+      } else {
+        flashActive(btn);
+      }
+      updateDirButtons();
+      magButtonGuidance();
+    });
+  });
+  document.getElementById('resetIntervalBtn').addEventListener('click', function(){
+    current = null;
+    resultIndex = null;
+    stepDirection = null;
+    stepMagnitude = null;
+    stepCount = 0;
+    document.querySelectorAll('.dir-btn, .mag-btn').forEach(function(b){ b.classList.remove('active'); });
+    renderStrip();
+    updateDirButtons();
+    readout.innerHTML = '';
+  });
+
+  renderStrip();
+  updateDirButtons();
+
+  // ---- tooltips acessíveis por toque (todas, incluindo as criadas dinamicamente) ----
+  document.querySelectorAll('.tooltip, .piano-tooltip').forEach(function(el){
+    el.setAttribute('role', 'button');
+    if (!el.hasAttribute('aria-expanded')) el.setAttribute('aria-expanded', 'false');
+  });
+  function positionTooltip(trigger){
+    var rect = trigger.getBoundingClientRect();
+    var maxWidth = 220;
+    var edgePadding = 12;
+    var viewportWidth = document.documentElement.clientWidth;
+    var shift = 0;
+    var tooltipRightEdge = rect.left + maxWidth;
+    var overflowRight = tooltipRightEdge - (viewportWidth - edgePadding);
+    if (overflowRight > 0) { shift = -overflowRight; }
+    if (rect.left + shift < edgePadding) { shift = edgePadding - rect.left; }
+    trigger.style.setProperty('--tip-shift', shift + 'px');
+  }
+  document.addEventListener('mouseover', function(e){
+    var trigger = e.target.closest && e.target.closest('.tooltip, .piano-tooltip');
+    if (trigger) positionTooltip(trigger);
+  });
+  document.addEventListener('focusin', function(e){
+    var trigger = e.target.closest('.tooltip, .piano-tooltip');
+    if (trigger) positionTooltip(trigger);
+  });
+  function closeAllTooltips(except){
+    document.querySelectorAll('.tooltip-open').forEach(function(el){
+      if (el !== except) {
+        el.classList.remove('tooltip-open');
+        el.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+  document.addEventListener('click', function(e){
+    var trigger = e.target.closest('.tooltip, .piano-tooltip');
+    if (trigger) {
+      e.stopPropagation();
+      var wasOpen = trigger.classList.contains('tooltip-open');
+      closeAllTooltips(trigger);
+      if (!wasOpen) { positionTooltip(trigger); }
+      trigger.classList.toggle('tooltip-open', !wasOpen);
+      trigger.setAttribute('role', 'button');
+      trigger.setAttribute('aria-expanded', String(!wasOpen));
+    } else {
+      closeAllTooltips(null);
+    }
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape') closeAllTooltips(null);
+  });
+})();
+</script>
 <script>
 (function(){
   var toggle = document.getElementById('quickNavToggle');

@@ -287,13 +287,14 @@
   .strings-diagram{ display:flex; justify-content:center; align-items:center; flex:1; margin: 0; }
   .strings-diagram svg{ max-width: 260px; width:100%; height:auto; }
   .instrument-diagram{ display:flex; justify-content:center; margin: 18px 0 6px; }
-  .instrument-diagram svg{ max-width: 170px; width:100%; height:auto; }
-  .cavaquinho-parts-row{ display:flex; gap:24px; align-items:center; flex-wrap:wrap; justify-content:flex-start; }
-  .cavaquinho-parts-row .instrument-diagram{ justify-content:flex-start; flex:0 0 auto; }
-  .cavaquinho-parts-row .instrument-diagram svg{ max-width: 113px; }
+  .instrument-diagram svg, .instrument-diagram img{ max-width: 170px; width:100%; height:auto; }
+  .cavaquinho-parts-row, .instrument-parts-row{ display:flex; gap:24px; align-items:center; flex-wrap:wrap; justify-content:flex-start; }
+  .cavaquinho-parts-row .instrument-diagram, .instrument-parts-row .instrument-diagram{ justify-content:flex-start; flex:0 0 auto; }
+  .cavaquinho-parts-row .instrument-diagram svg, .instrument-parts-row .instrument-diagram svg,
+  .cavaquinho-parts-row .instrument-diagram img, .instrument-parts-row .instrument-diagram img{ max-width: 113px; }
   @media (max-width: 620px){
-    .cavaquinho-parts-row{ justify-content:center; }
-    .cavaquinho-parts-row .instrument-diagram{ justify-content:center; }
+    .cavaquinho-parts-row, .instrument-parts-row{ justify-content:center; }
+    .cavaquinho-parts-row .instrument-diagram, .instrument-parts-row .instrument-diagram{ justify-content:center; }
   }
   .piano-diagram{ display:flex; justify-content:center; margin: 4px 0 6px; }
   .piano-diagram svg{ max-width: 320px; width:100%; height:auto; }
@@ -306,7 +307,7 @@
   .piano-key{ cursor: pointer; }
   .piano-key:hover{ opacity: .8; }
   .string-key{ cursor: pointer; }
-  #cavaquinhoCard{ cursor: ew-resize; touch-action: pan-y; -webkit-user-select: none; user-select: none; }
+  #cavaquinhoCard, #bandolimCard{ cursor: ew-resize; touch-action: pan-y; -webkit-user-select: none; user-select: none; }
   .strum-hint{
     margin: 4px 0 0; font-size: 0.75rem; color: var(--ink-soft); opacity: .75;
     text-align: center; margin-top: auto; padding-top: 4px;
@@ -318,7 +319,7 @@
     60% { transform: translateX(-4px); }
     80% { transform: translateX(2px); }
   }
-  #cavaquinhoCard .instrument-diagram{
+  #cavaquinhoCard .instrument-diagram, #bandolimCard .instrument-diagram{
     animation: strumHint 2.4s ease-in-out 1s 3;
   }
 
