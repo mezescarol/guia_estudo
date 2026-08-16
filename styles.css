@@ -152,7 +152,8 @@
     transform: translateY(-4px);
     transition: opacity .2s ease, transform .2s ease, visibility .2s ease;
   }
-  .cover p.sub .instrument-icons .instrument-item:hover .instrument-label{
+  .cover p.sub .instrument-icons .instrument-item:hover .instrument-label,
+  .cover p.sub .instrument-icons .instrument-item.auto-spin .instrument-label{
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
@@ -163,12 +164,15 @@
     width: 88px;
     height: 88px;
     object-fit: contain;
-    transition: transform .55s ease, width .24s ease, height .24s ease;
+    transition: transform .75s ease, width .32s ease, height .32s ease;
     transform-origin: center center;
   }
   .cover p.sub .instrument-icons .instrument-item img[src$="cavaquinho.png"]:hover,
   .cover p.sub .instrument-icons .instrument-item img[src$="guitar.png"]:hover,
-  .cover p.sub .instrument-icons .instrument-item img[src$="bandolim.png"]:hover{
+  .cover p.sub .instrument-icons .instrument-item img[src$="bandolim.png"]:hover,
+  .cover p.sub .instrument-icons .instrument-item.auto-spin img[src$="cavaquinho.png"],
+  .cover p.sub .instrument-icons .instrument-item.auto-spin img[src$="guitar.png"],
+  .cover p.sub .instrument-icons .instrument-item.auto-spin img[src$="bandolim.png"]{
     width: 100px;
     height: 100px;
     transform: rotate(45deg);

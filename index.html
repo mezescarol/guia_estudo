@@ -22,5 +22,62 @@
   <footer>Feito por Carolina Mezes - Coimbra, agosto de 2026.<br>Utilizado material de apoio feito por Beatriz Ormonde e Daniel Madeira - Coimbra, Março de 2024</footer>
 </div>
 
+<script>
+(function(){
+  var container = document.querySelector('.instrument-icons');
+  if (!container) return;
+  var items = container.querySelectorAll('.instrument-item');
+  var HOLD_MS = 1200;
+  var GAP_MS = 300;
+  var observer = null;
+  var running = false;
+
+  function resetIcons(){
+    Array.prototype.forEach.call(items, function(item){ item.classList.remove('auto-spin'); });
+  }
+
+  function spin(i){
+    if (i >= items.length) { running = false; return; }
+    var item = items[i];
+    item.classList.add('auto-spin');
+    setTimeout(function(){
+      item.classList.remove('auto-spin');
+      setTimeout(function(){ spin(i + 1); }, GAP_MS);
+    }, HOLD_MS);
+  }
+
+  function startSequence(){
+    var isMobile = window.matchMedia('(max-width: 620px)').matches;
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!isMobile || reduceMotion || running) return;
+    running = true;
+    spin(0);
+  }
+
+  function watch(){
+    if (observer) observer.disconnect();
+    observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting && entry.intersectionRatio >= 0.999) {
+          startSequence();
+          observer.disconnect();
+        }
+      });
+    }, { threshold: 1.0 });
+    observer.observe(container);
+  }
+
+  watch();
+
+  // navegação de volta via bfcache não reexecuta o script - reinicia a sequência manualmente
+  window.addEventListener('pageshow', function(e){
+    if (e.persisted) {
+      resetIcons();
+      running = false;
+      watch();
+    }
+  });
+})();
+</script>
 </body>
 </html>
