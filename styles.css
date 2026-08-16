@@ -21,6 +21,8 @@
 
     --toggle-on: #62C370;
     --toggle-on-ink: #FFFFFF;
+
+    --page-pad: clamp(20px, 5vw, 48px);
   }
   @media (prefers-color-scheme: dark){
     :root:not([data-theme="light"]){
@@ -85,7 +87,7 @@
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
   }
-  .page{ max-width: 760px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 48px) clamp(80px, 10vw, 100px); display: flex; flex-direction: column; min-height: 100vh; }
+  .page{ max-width: 760px; margin: 0 auto; padding: 0 var(--page-pad) clamp(80px, 10vw, 100px); display: flex; flex-direction: column; min-height: 100vh; }
 
   h1,h2,h3{
     font-family: 'Hoefler Text', 'Iowan Old Style', Palatino, 'Palatino Linotype', 'Book Antiqua', Georgia, serif;
@@ -141,6 +143,14 @@
     flex-direction: column;
     align-items: center;
     gap: 6px;
+    transition: transform .3s ease, opacity .3s ease;
+    transform-origin: center center;
+  }
+  .cover p.sub .instrument-icons .instrument-item.icon-clicked{
+    transform: scale(1.2);
+  }
+  .cover p.sub .instrument-icons.has-clicked .instrument-item:not(.icon-clicked){
+    opacity: 0.5;
   }
   .cover p.sub .instrument-icons .instrument-label{
     font-size: 0.72rem;
@@ -152,7 +162,8 @@
     transform: translateY(-4px);
     transition: opacity .2s ease, transform .2s ease, visibility .2s ease;
   }
-  .cover p.sub .instrument-icons .instrument-item.auto-spin .instrument-label{
+  .cover p.sub .instrument-icons .instrument-item.auto-spin .instrument-label,
+  .cover p.sub .instrument-icons .instrument-item.icon-clicked .instrument-label{
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
@@ -161,10 +172,18 @@
   .cover p.sub .instrument-icons .instrument-item img[src$="guitar.png"],
   .cover p.sub .instrument-icons .instrument-item img[src$="bandolim.png"]{
     width: 88px;
-    height: 88px;
+    aspect-ratio: 1 / 1;
     object-fit: contain;
     transition: transform .75s ease;
     transform-origin: center center;
+  }
+  @media (max-width: 620px){
+    .cover p.sub .instrument-icons{ margin-top: 28px; }
+    .cover p.sub .instrument-icons .instrument-item img[src$="cavaquinho.png"],
+    .cover p.sub .instrument-icons .instrument-item img[src$="guitar.png"],
+    .cover p.sub .instrument-icons .instrument-item img[src$="bandolim.png"]{
+      width: clamp(64px, calc((100vw - 2 * var(--page-pad) - 28px) / 3), 112px);
+    }
   }
   .cover p.sub .instrument-icons .instrument-item.auto-spin img[src$="cavaquinho.png"],
   .cover p.sub .instrument-icons .instrument-item.auto-spin img[src$="guitar.png"],

@@ -437,15 +437,19 @@
 (function(){
   var toggle = document.getElementById('quickNavToggle');
   var panel = document.getElementById('quickNavPanel');
+  var STORAGE_KEY = 'quickNavOpen';
+  function openQuickNav(){
+    panel.hidden = false;
+    toggle.setAttribute('aria-expanded', 'true');
+  }
   function closeQuickNav(){
     panel.hidden = true;
     toggle.setAttribute('aria-expanded', 'false');
+    sessionStorage.removeItem(STORAGE_KEY);
   }
   toggle.addEventListener('click', function(e){
     e.stopPropagation();
-    var isOpen = !panel.hidden;
-    panel.hidden = isOpen;
-    toggle.setAttribute('aria-expanded', String(!isOpen));
+    if (panel.hidden) { sessionStorage.setItem(STORAGE_KEY, '1'); openQuickNav(); } else { closeQuickNav(); }
   });
   document.addEventListener('click', function(e){
     if (!panel.hidden && !panel.contains(e.target) && e.target !== toggle) closeQuickNav();
@@ -453,6 +457,11 @@
   document.addEventListener('keydown', function(e){
     if (e.key === 'Escape') closeQuickNav();
   });
+  // mantém o menu aberto ao navegar para outra página pelo próprio menu
+  panel.querySelectorAll('a[href$=".html"]').forEach(function(link){
+    link.addEventListener('click', function(){ sessionStorage.setItem(STORAGE_KEY, '1'); });
+  });
+  if (sessionStorage.getItem(STORAGE_KEY) === '1') { openQuickNav(); }
 })();
 </script>
 </body>
