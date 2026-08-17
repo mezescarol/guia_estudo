@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cavaquinho - Guia de Estudo</title>
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="css/styles.css">
 </head>
 <body data-page="cavaquinho">
 
@@ -27,7 +27,7 @@
     <h2>O cavaquinho</h2>
     <div class="cavaquinho-parts-row">
       <div class="instrument-diagram">
-        <img src="./icons/cavaquinho.png" alt="Ilustração do cavaquinho">
+        <img src="./assets/icons/cavaquinho.png" alt="Ilustração do cavaquinho">
       </div>
       <div style="flex:1 1 260px;">
         <p><strong>A cabeça</strong> é a primeira parte do instrumento, onde estão os <span class="tooltip" tabindex="0" data-tooltip="Carrilhões ou tarraxas são as peças metálicas que giramos para tensionar ou afrouxar as cordas.">carrilhões</span> responsáveis pela afinação das cordas.</p>
@@ -70,7 +70,7 @@
     </div>
     <div class="card" id="cavaquinhoCard">
       <div class="instrument-diagram">
-        <img src="./icons/cavaquinho.png" alt="Ilustração do cavaquinho">
+        <img src="./assets/icons/cavaquinho.png" alt="Ilustração do cavaquinho">
       </div>
       <p class="strum-hint">⇆ arrasta para dedilhar</p>
     </div>
@@ -270,8 +270,8 @@
   <footer>Feito por Carolina Mezes - Coimbra, agosto de 2026.<br>Utilizado material de apoio feito por Beatriz Ormonde e Daniel Madeira - Coimbra, Março de 2024</footer>
 </div>
 
-<script src="quick-nav.js"></script>
-<script src="audio-engine.js"></script>
+<script src="js/quick-nav.js"></script>
+<script src="js/audio-engine.js"></script>
 <script>
 (function(){
   var cavaquinhoCard = document.getElementById('cavaquinhoCard');
@@ -919,6 +919,11 @@
     var minFret = relevant.length ? Math.min.apply(null, relevant) : 0;
     var base = relevant.length ? (minFret - 1) : 0; // barra 0 (linha0) fica logo acima da 1ª casa usada
     var lineCount = 4; // sempre 4 casas: a(s) do acorde + as seguintes, para todas as figuras terem a mesma dimensão
+    // se a janela natural ultrapassar o fim do braço (casa 12), recua o suficiente para a
+    // última casa mostrada ser sempre exatamente a 12 - nunca 13 ou além
+    if (relevant.length) {
+      base = Math.min(base, FRET_MAX - lineCount);
+    }
 
     var xs = [30, 70, 110, 150];
     var top = 34, gap = 42;
@@ -940,8 +945,8 @@
     for (var i=0;i<=lineCount;i++){
       var yLine = top + gap*i;
       var isNut = (base===0 && i===0);
-      var isNeckEnd = (base+i === FRET_MAX && i === lineCount);
-      parts.push('<line x1="20" y1="'+yLine+'" x2="160" y2="'+yLine+'" stroke="currentColor" stroke-width="'+(isNut?3:1.2)+'" opacity="'+(isNut?0.9:0.45)+'"/>');
+      var isNeckEnd = (base+i === FRET_MAX);
+      parts.push('<line x1="20" y1="'+yLine+'" x2="160" y2="'+yLine+'" stroke="currentColor" stroke-width="'+((isNut||isNeckEnd)?3:1.2)+'" opacity="'+((isNut||isNeckEnd)?0.9:0.45)+'"/>');
       if (isNut) {
         parts.push('<text x="20" y="'+(yLine-7)+'" text-anchor="start" font-size="7" fill="currentColor" opacity=".35" font-family="ui-monospace,monospace">início do braço</text>');
       }
@@ -950,8 +955,9 @@
       }
     }
 
-    // números das casas, no meio do espaço entre cada par de barras
+    // números das casas, no meio do espaço entre cada par de barras - nunca além do fim do braço
     for (var c=1;c<=lineCount;c++){
+      if (base+c > FRET_MAX) continue;
       var yMid = top + gap*c - gap/2;
       parts.push('<text x="10" y="'+(yMid+4)+'" text-anchor="middle" font-size="9" fill="currentColor" opacity=".5" font-family="ui-monospace,monospace">'+(base+c)+'</text>');
     }
