@@ -860,22 +860,44 @@
       var fAnelarP = mod12(root - 2);
       var fMedioP = fAnelarP - 1;
       var fIndicadorP = fAnelarP - 2;
-      var dotsP = [
-        fMedioP > 0 ? fMedioP : null,
-        fMedioP > 0 ? fMedioP : null,
-        fIndicadorP > 0 ? fIndicadorP : null,
-        fAnelarP > 0 ? fAnelarP : null
-      ];
-      chordDots = dotsP;
-      svg = buildSvg(dotsP, fMedioP > 0 ? [[0,1]] : []);
-      caption = 'Pirete - anelar na casa ' + fAnelarP;
-      var piretePieces = [];
-      if (fIndicadorP > 0) piretePieces.push('indicador na corda Si (casa ' + fIndicadorP + ')');
-      if (fMedioP > 0) piretePieces.push('médio nas cordas Sol (casa ' + fMedioP + ')');
-      piretePieces.push(fAnelarP > 0 ? ('anelar na corda Ré (casa ' + fAnelarP + ')') : 'anelar solto na corda Ré');
-      note = piretePieces.join(', ') + '.';
-      if (fIndicadorP <= 0 || fMedioP <= 0) {
-        note += ' Nesta posição, alguns dedos ficam fora do braço ou em cordas soltas, por isso não são indicados.';
+      if (fIndicadorP < 0) {
+        // acontece para Ré e Ré# maior (os únicos roots em que fAnelarP é 0 ou 1) - a posição
+        // natural deixaria o indicador numa casa negativa; sobe a forma toda uma oitava
+        // (12 casas) para uma posição jogável. Se o anelar (corda Ré) ficar além do fim do
+        // braço (casa 12) depois de subir, fica de fora da posição - só acontece para Ré#
+        // (fAnelarP 1 -> 13); para Ré (fAnelarP 0 -> 12) o anelar continua a caber e é mostrado
+        fAnelarP += 12;
+        fMedioP += 12;
+        fIndicadorP += 12;
+        var anelarFits = fAnelarP <= FRET_MAX;
+        var dotsP = [fMedioP, fMedioP, fIndicadorP, anelarFits ? fAnelarP : null];
+        chordDots = dotsP;
+        svg = buildSvg(dotsP, [[0,1]]);
+        if (anelarFits) {
+          caption = 'Pirete - anelar na casa ' + fAnelarP;
+          note = 'Indicador na corda Si (casa ' + fIndicadorP + '), médio nas cordas Sol (casa ' + fMedioP + '), anelar na corda Ré (casa ' + fAnelarP + ').';
+        } else {
+          caption = 'Pirete - indicador na casa ' + fIndicadorP + ', médio na casa ' + fMedioP;
+          note = 'Indicador na corda Si (casa ' + fIndicadorP + ') e médio nas cordas Sol (casa ' + fMedioP + '); a corda Ré ficaria na casa ' + fAnelarP + ', além do fim do braço, por isso não é indicada.';
+        }
+      } else {
+        var dotsP = [
+          fMedioP > 0 ? fMedioP : null,
+          fMedioP > 0 ? fMedioP : null,
+          fIndicadorP > 0 ? fIndicadorP : null,
+          fAnelarP > 0 ? fAnelarP : null
+        ];
+        chordDots = dotsP;
+        svg = buildSvg(dotsP, fMedioP > 0 ? [[0,1]] : []);
+        caption = 'Pirete - anelar na casa ' + fAnelarP;
+        var piretePieces = [];
+        if (fIndicadorP > 0) piretePieces.push('indicador na corda Si (casa ' + fIndicadorP + ')');
+        if (fMedioP > 0) piretePieces.push('médio nas cordas Sol (casa ' + fMedioP + ')');
+        piretePieces.push(fAnelarP > 0 ? ('anelar na corda Ré (casa ' + fAnelarP + ')') : 'anelar solto na corda Ré');
+        note = piretePieces.join(', ') + '.';
+        if (fIndicadorP <= 0 || fMedioP <= 0) {
+          note += ' Nesta posição, alguns dedos ficam fora do braço ou em cordas soltas, por isso não são indicados.';
+        }
       }
     } else if (quality === 'major') {
       var dots = [fMajor, fMajor, fMajor, fMajor];
