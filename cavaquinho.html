@@ -918,22 +918,32 @@
       // barra nas cordas Sol e Si + anelar sobe a corda Ré duas casas acima da barra, pulando uma casa
       var fBarrePireteMenor = mod12(root - 4);
       var fAnelarPireteMenor = fBarrePireteMenor + 2;
+      if (fAnelarPireteMenor > FRET_MAX) {
+        // só acontece para Ré# menor (o único root em que fBarrePireteMenor é 11) - o anelar
+        // cairia na casa 13, além do fim do braço; em vez de forçar uma posição, mostra uma
+        // mensagem no lugar do diagrama, por pedido explícito
+        fretWrap.innerHTML = '<p style="text-align:left;color:var(--ink-soft);font-size:1.0125rem;padding:20px 8px;">Não vamos falar dele agora 🤪</p>';
+        fretCaption.textContent = '';
+        return;
+      }
       var dotsPireteMenor = [fBarrePireteMenor, fBarrePireteMenor, fBarrePireteMenor, fAnelarPireteMenor];
       chordDots = dotsPireteMenor;
       svg = buildSvg(dotsPireteMenor, [[0,1,2]]);
       caption = 'Pirete - barra na casa ' + fBarrePireteMenor + ', anelar na casa ' + fAnelarPireteMenor;
       note = 'Barra nas cordas Sol e Si na casa ' + fBarrePireteMenor + (fBarrePireteMenor===0 ? ' (cordas soltas)' : '') + '; o anelar sobe a corda Ré até à casa ' + fAnelarPireteMenor + ', pulando a casa ' + (fBarrePireteMenor+1) + '.';
     } else {
-      if (fMajor === 0) {
-        fretWrap.innerHTML = '<p style="text-align:left;color:var(--ink-soft);font-size:1.0125rem;padding:20px 8px;">A barra simples não é possível na posição aberta para ' + NOTES[root] + ' menor - experimenta outra forma para este acorde.</p>';
-        fretCaption.textContent = '';
-        return;
-      }
-      // strings 0,1,3 at fMajor ; string 2 (Si string, the 3rd) at fMajor-1
-      var dots2 = [fMajor, fMajor, fMajor - 1, fMajor];
+      // Sol menor é o único root em que fMajor é 0 - a posição aberta não é possível numa
+      // barra partida (não há casa "-1" para a corda Si); em vez de bloquear, sobe a forma toda
+      // uma oitava (casa 0 -> 12), que fica jogável e é a última posição disponível no braço
+      var fMajorMenor = fMajor === 0 ? 12 : fMajor;
+      // strings 0,1,3 at fMajorMenor ; string 2 (Si string, the 3rd) at fMajorMenor-1
+      // cordas Sol (0,1) são adjacentes e ficam na mesma casa, por isso formam uma barra contínua;
+      // a corda Ré (3) também está em fMajorMenor mas não é adjacente às Sol (a Si fica entre elas,
+      // numa casa diferente), por isso continua com o seu próprio dedo pontual
+      var dots2 = [fMajorMenor, fMajorMenor, fMajorMenor - 1, fMajorMenor];
       chordDots = dots2;
-      svg = buildSvg(dots2, []);
-      caption = 'Barra partida - casa ' + fMajor + ', 3ª corda um traste atrás (casa ' + (fMajor-1) + ')';
+      svg = buildSvg(dots2, [[0,1]]);
+      caption = 'Barra partida - casa ' + fMajorMenor + ', 3ª corda um traste atrás (casa ' + (fMajorMenor-1) + ')';
       note = 'A corda do Si fica uma casa abaixo das outras três, para baixar o 3.º grau.';
     }
 
