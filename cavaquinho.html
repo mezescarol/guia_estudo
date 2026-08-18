@@ -833,17 +833,28 @@
       var fMedio = mod12(root + 1);
       var fIndicador = fMedio - 1;
       var fAnelar = fMedio + 1;
-      var hasIndicador = fIndicador >= 0;
-      var showIndicador = fIndicador > 0;
-      var dotsEsc = hasIndicador ? [fIndicador, fIndicador, fMedio, fAnelar] : [null, null, fMedio, fAnelar];
-      chordDots = dotsEsc;
-      svg = buildSvg(dotsEsc, hasIndicador ? [[0,1]] : []);
-      caption = 'Escadinha - médio na casa ' + fMedio + (hasIndicador ? '' : ' (indicador fora do braço nesta posição)');
-      note = showIndicador
-        ? 'Indicador nas cordas Sol (casa ' + fIndicador + '), médio na corda Si (casa ' + fMedio + '), anelar na corda Ré (casa ' + fAnelar + ').'
-        : (hasIndicador
-          ? 'Médio na corda Si (casa ' + fMedio + ') e anelar na corda Ré (casa ' + fAnelar + '); as cordas Sol ficam soltas, sem dedo a pressionar.'
-          : 'Médio na corda Si (casa ' + fMedio + ') e anelar na corda Ré (casa ' + fAnelar + '); o indicador ficaria numa casa negativa, por isso as cordas Sol não são indicadas.');
+      if (fIndicador < 0) {
+        // só acontece para Si maior (o único root em que fMedio é 0) - em vez de omitir o
+        // indicador e deixar médio/anelar numa posição aberta, sobe a forma toda uma oitava
+        // (12 casas) para casas 11/12, jogável; nessa posição o anelar (3ª, corda Ré) cairia na
+        // casa 13, além do fim do braço (12), por isso fica de fora e o acorde mostra só 2 dedos
+        fMedio += 12;
+        fIndicador += 12;
+        var dotsEsc = [fIndicador, fIndicador, fMedio, null];
+        chordDots = dotsEsc;
+        svg = buildSvg(dotsEsc, [[0,1]]);
+        caption = 'Escadinha - indicador na casa ' + fIndicador + ', médio na casa ' + fMedio;
+        note = 'Indicador nas cordas Sol (casa ' + fIndicador + ') e médio na corda Si (casa ' + fMedio + '); a corda Ré ficaria na casa ' + (fMedio + 1) + ', além do fim do braço, por isso não é indicada.';
+      } else {
+        var showIndicador = fIndicador > 0;
+        var dotsEsc = [fIndicador, fIndicador, fMedio, fAnelar];
+        chordDots = dotsEsc;
+        svg = buildSvg(dotsEsc, [[0,1]]);
+        caption = 'Escadinha - médio na casa ' + fMedio;
+        note = showIndicador
+          ? 'Indicador nas cordas Sol (casa ' + fIndicador + '), médio na corda Si (casa ' + fMedio + '), anelar na corda Ré (casa ' + fAnelar + ').'
+          : 'Médio na corda Si (casa ' + fMedio + ') e anelar na corda Ré (casa ' + fAnelar + '); as cordas Sol ficam soltas, sem dedo a pressionar.';
+      }
     } else if (quality === 'major' && forma === 'pirete') {
       // anelar: corda Ré (3, toca a fundamental) · médio: cordas Sol (0,1, toca a 3ª maior) · indicador: corda Si (2, toca a 5ª)
       var fAnelarP = mod12(root - 2);
