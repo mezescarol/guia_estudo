@@ -213,47 +213,56 @@
   <section id="construtor">
     <p class="kicker">05 · Prática</p>
     <h2>Construindo acordes no cavaquinho</h2>
-    <p>Escolha a nota, qualidade e forma para construir o seu acorde no cavaquinho (Sol - Sol - Si - Ré).</p>
-    <div class="card">
-      <div class="builder-controls">
-        <div class="builder-nota">
-          <div class="readout" style="margin-bottom:8px;">Nota</div>
-          <div class="root-grid" id="rootGrid"></div>
-        </div>
-        <div class="builder-qualidade">
-          <div class="readout" style="margin-bottom:8px;">Qualidade</div>
-          <div class="quality-toggle" id="qualidadeToggle">
-            <button id="qMajor">Acorde maior</button>
-            <button id="qMinor">Acorde menor</button>
-          </div>
-        </div>
-        <div class="builder-forma">
-          <div class="readout" style="margin-bottom:8px;">Forma</div>
-          <div class="quality-toggle">
-            <button id="formaBarra">Barra</button>
-            <button id="formaEscadinha">Escadinha</button>
-            <button id="formaPirete">Pirete</button>
-          </div>
-        </div>
+    <p>Escolha a nota, qualidade e forma para construir o seu acorde no cavaquinho.</p>
+    <div class="browser-panel">
+      <div class="tuning-tabs">
+        <span class="tuning-tab active">
+          <span class="tuning-tab-icon" aria-hidden="true"></span>
+          Sol - Sol - Si - Ré
+          <span class="tuning-tab-close" aria-hidden="true">×</span>
+        </span>
       </div>
+      <div class="card">
+        <div class="builder-controls">
+          <div class="builder-nota">
+            <div class="readout" style="margin-bottom:8px;">Nota</div>
+            <div class="root-grid" id="rootGrid"></div>
+          </div>
+          <div class="builder-qualidade">
+            <div class="readout" style="margin-bottom:8px;">Qualidade</div>
+            <div class="quality-toggle" id="qualidadeToggle">
+              <button id="qMajor">Acorde maior</button>
+              <button id="qMinor">Acorde menor</button>
+            </div>
+          </div>
+          <div class="builder-forma">
+            <div class="readout" style="margin-bottom:8px;">Forma</div>
+            <div class="quality-toggle">
+              <button id="formaBarra">Barra</button>
+              <button id="formaEscadinha">Escadinha</button>
+              <button id="formaPirete">Pirete</button>
+            </div>
+          </div>
+        </div>
 
-      <div class="result-grid">
-        <div class="chord-result-info">
-          <p class="chord-name" id="chordName">Escolhe a nota, qualidade e forma</p>
-          <ol class="formula-steps" id="degreeList"></ol>
+        <div class="result-grid">
+          <div class="chord-result-info">
+            <p class="chord-name" id="chordName">Escolhe a nota, qualidade e forma</p>
+            <ol class="formula-steps" id="degreeList"></ol>
+          </div>
+          <div class="chord-result-diagram">
+            <div class="fret-wrap" id="fretWrap"></div>
+            <p class="fret-caption" id="fretCaption"></p>
+          </div>
         </div>
-        <div class="chord-result-diagram">
-          <div class="fret-wrap" id="fretWrap"></div>
-          <p class="fret-caption" id="fretCaption"></p>
+        <div class="piano-toggle-row">
+          <span class="piano-toggle-label">Visualizar acorde no piano</span>
+          <button type="button" id="pianoToggleBtn" class="piano-toggle-switch" role="switch" aria-checked="false">
+            <span class="piano-toggle-knob"></span>
+          </button>
         </div>
+        <div class="piano-toggle-panel" id="pianoTogglePanel" hidden></div>
       </div>
-      <div class="piano-toggle-row">
-        <span class="piano-toggle-label">Visualizar acorde no piano</span>
-        <button type="button" id="pianoToggleBtn" class="piano-toggle-switch" role="switch" aria-checked="false">
-          <span class="piano-toggle-knob"></span>
-        </button>
-      </div>
-      <div class="piano-toggle-panel" id="pianoTogglePanel" hidden></div>
     </div>
   </section>
 

@@ -613,6 +613,22 @@
   }
   .quality-toggle button.active{ background: var(--wood); border-color:var(--wood); color:var(--paper-raised); }
 
+  .browser-panel{ display:flex; flex-direction:column; }
+  .browser-panel .card{ border-top-left-radius:0; border-top-right-radius:0; border-top:none; }
+  .tuning-tabs{
+    display:flex; align-items:flex-end; gap:6px; padding: 10px 14px 0 0;
+    background: var(--azulejo-pale); border: 1px solid var(--line); border-bottom:none;
+    border-radius: 0 12px 0 0;
+  }
+  .tuning-tab{
+    display:flex; align-items:center; gap:8px; padding: 8px 10px 9px 12px;
+    border: 1px solid var(--line); border-bottom:none; border-radius: 8px 8px 0 0;
+    background: var(--paper-raised); color:var(--ink);
+    font-family: ui-monospace, monospace; font-size: 0.8125rem; margin-bottom:-1px;
+  }
+  .tuning-tab-icon{ width:10px; height:10px; border-radius:50%; background:var(--wood); flex:0 0 auto; }
+  .tuning-tab-close{ font-size:0.8125rem; line-height:1; color:var(--ink-soft); opacity:.6; }
+
   .result-grid{ display:grid; grid-template-columns: 1.1fr 1fr; gap: 24px; align-items:start; }
   @media (max-width: 640px){ .result-grid{ grid-template-columns: 1fr; } }
   .result-grid:has(#degreeList:empty) .chord-result-info{ grid-column: 1 / -1; }
