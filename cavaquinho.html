@@ -11,8 +11,10 @@
 <div class="page">
 
   <header class="cover" style="padding-bottom: 0;">
-    <div class="staff"><span></span><span></span><span></span><span></span><span></span></div>
-    <div class="eyebrow"><a href="index.html">Página inicial</a> · <span class="is-current">Cavaquinho</span> · <a href="bandolim.html">Bandolim</a> · <a href="guitarra.html">Guitarra</a></div>
+    <div class="cover-band">
+      <div class="staff"><span></span><span></span><span></span><span></span><span></span></div>
+      <div class="eyebrow"><a href="index.html">Página inicial</a> · <span class="is-current">Cavaquinho</span> · <a href="bandolim.html">Bandolim</a> · <a href="guitarra.html">Guitarra</a></div>
+    </div>
     <div class="toc-separator" aria-hidden="true"></div>
   </header>
 
@@ -21,6 +23,14 @@
   <div class="scroll-progress" role="progressbar" aria-label="Progresso de leitura" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
     <div class="scroll-progress-fill" id="scrollProgressFill"></div>
   </div>
+
+  <div class="browser-panel">
+    <div class="tuning-tabs lesson-tabs aula-tabs">
+      <span class="tuning-tab active" id="tabAula1">Aula 1</span>
+      <span class="tuning-tab" id="tabAula2">Aula 2</span>
+    </div>
+  <div class="lesson-block" id="lessonBlock">
+  <div id="aula1Content">
 
   <section id="afinacao" style="padding-top: 28px;">
     <p class="kicker">01 · Introdução</p>
@@ -35,9 +45,9 @@
         <p><strong>O corpo</strong> é a parte inferior, composta pela <strong><span class="tooltip" tabindex="0" data-tooltip="Um corpo oco feito de madeira que serve como amplificador natural do som.">caixa de ressonância</span></strong>, responsável pela sonorização do instrumento.</p>
       </div>
     </div>
-    <div class="card" style="margin-top:1.6em;">
+    <div class="card notes-card" style="margin-top:1.6em;">
       <p style="margin:0 0 12px;"><strong>Duas notas para se ter em atenção:</strong></p>
-      <ol style="margin:0; padding-left:20px; color:var(--ink-soft); display:flex; flex-direction:column; gap:8px;">
+      <ol style="margin:0; padding-left:20px; display:flex; flex-direction:column; gap:8px;">
         <li>diferentemente da <span class="tooltip" tabindex="0" data-tooltip="Guitarra (Portugal), Violão (Brasil).">guitarra</span>, rasgamos as cordas antes da abertura da caixa de ressonância, não em cima da mesma;</li>
         <li>ter cuidado para não arranhar o corpo com a palheta.</li>
       </ol>
@@ -165,7 +175,7 @@
 
     <h2 style="margin-top:1.6em;">Construtor de acordes</h2>
     <p>Para tornar a nossa vida mais simples, voltamos ao piano para visualizar os acordes.</p>
-    <div class="card">
+    <div class="card montar-select-card">
       <p style="margin-top:0;">Seleciona o acorde que queres montar.</p>
       <div class="quality-toggle">
         <button id="montarMajorBtn">Acorde maior</button>
@@ -173,7 +183,7 @@
       </div>
       <div class="root-grid-row" id="montarRootGrid" style="margin-top:16px;"></div>
     </div>
-    <div class="card">
+    <div class="card montar-piano-card">
       <div class="piano-diagram wide" id="montarPianoWrap"></div>
     </div>
   </section>
@@ -215,10 +225,13 @@
     <h2>Construindo acordes no cavaquinho</h2>
     <p>Escolha a nota, qualidade e forma para construir o seu acorde no cavaquinho.</p>
     <div class="browser-panel">
-      <div class="tuning-tabs">
+      <div class="tuning-tabs lesson-tabs">
         <span class="tuning-tab active">
-          <span class="tuning-tab-icon" aria-hidden="true"></span>
-          Sol - Sol - Si - Ré
+          G G B D
+          <span class="tuning-tab-close" aria-hidden="true">×</span>
+        </span>
+        <span class="tuning-tab" id="tabAltTuning">
+          <span class="tuning-tab-label" id="tabAltTuningLabel">D G B D</span>
           <span class="tuning-tab-close" aria-hidden="true">×</span>
         </span>
       </div>
@@ -252,7 +265,6 @@
           </div>
           <div class="chord-result-diagram">
             <div class="fret-wrap" id="fretWrap"></div>
-            <p class="fret-caption" id="fretCaption"></p>
           </div>
         </div>
         <div class="piano-toggle-row">
@@ -276,6 +288,10 @@
     </ul>
   </section>
 
+  </div>
+  </div>
+  </div>
+
   <footer>Feito por Carolina Mezes - Coimbra, agosto de 2026.<br>Utilizado material de apoio feito por Beatriz Ormonde e Daniel Madeira - Coimbra, Março de 2024</footer>
 </div>
 
@@ -283,6 +299,37 @@
 <script src="js/audio-engine.js"></script>
 <script>
 (function(){
+  var tabAula1 = document.getElementById('tabAula1');
+  var tabAula2 = document.getElementById('tabAula2');
+  var aula1Content = document.getElementById('aula1Content');
+  tabAula1.addEventListener('click', function(){
+    tabAula1.classList.add('active');
+    tabAula2.classList.remove('active');
+    aula1Content.hidden = false;
+  });
+  tabAula2.addEventListener('click', function(){
+    tabAula2.classList.add('active');
+    tabAula1.classList.remove('active');
+    aula1Content.hidden = true;
+  });
+
+  var tabAltTuningLabel = document.getElementById('tabAltTuningLabel');
+  document.getElementById('tabAltTuning').addEventListener('click', function(){
+    if (tabAltTuningLabel.classList.contains('fade-out')) return;
+    tabAltTuningLabel.classList.add('fade-out');
+    setTimeout(function(){
+      tabAltTuningLabel.textContent = 'Em breve 🤪';
+      tabAltTuningLabel.classList.remove('fade-out');
+      setTimeout(function(){
+        tabAltTuningLabel.classList.add('fade-out');
+        setTimeout(function(){
+          tabAltTuningLabel.textContent = 'D G B D';
+          tabAltTuningLabel.classList.remove('fade-out');
+        }, 300);
+      }, 1000);
+    }, 300);
+  });
+
   var cavaquinhoCard = document.getElementById('cavaquinhoCard');
   var dragStartX = null;
   cavaquinhoCard.addEventListener('pointerdown', function(e){
@@ -738,7 +785,6 @@
   var chordName = document.getElementById('chordName');
   var degreeList = document.getElementById('degreeList');
   var fretWrap = document.getElementById('fretWrap');
-  var fretCaption = document.getElementById('fretCaption');
   var pianoToggleBtn = document.getElementById('pianoToggleBtn');
   var pianoTogglePanel = document.getElementById('pianoTogglePanel');
 
@@ -762,7 +808,7 @@
       blackW: 8.8,
       blackH: 39.6,
       degreeOf: degreeOf,
-      rootIdx: null, // Não mostrar label da nota
+      rootIdx: chordRoot,
       labelMap: MONTAR_LABELS,
       isBlack: MONTAR_IS_BLACK,
       freqFor: freqForAbsIndex,
@@ -793,18 +839,11 @@
     formaEscadinha.classList.toggle('active', forma==='escadinha');
     formaPirete.classList.toggle('active', forma==='pirete');
 
-    if (root === null || quality === null || forma === null) {
-      var missing = [];
-      if (root === null) missing.push('a nota');
-      if (quality === null) missing.push('a qualidade');
-      if (forma === null) missing.push('a forma');
-      var missingPhrase = missing.length === 1 ? missing[0]
-        : missing.slice(0, -1).join(', ') + ' e ' + missing[missing.length - 1];
-      chordName.textContent = 'Escolhe ' + missingPhrase + ' para ver o acorde';
+    if (root === null || quality === null) {
+      chordName.textContent = '';
       if (pianoToggleBtn.getAttribute('aria-checked') === 'true') { pianoTogglePanel.innerHTML = ''; }
       degreeList.innerHTML = '';
       fretWrap.innerHTML = '';
-      fretCaption.innerHTML = '';
       return;
     }
 
@@ -817,9 +856,14 @@
     }
 
     degreeList.innerHTML =
-      '<li><span class="deg">1.º</span><span class="desc mono">' + NOTES[root] + '</span></li>' +
-      '<li><span class="deg">3.º</span><span class="desc mono">' + NOTES[third] + '&nbsp;<span style="opacity:.65">(' + (quality==='major'?'+4':'+3') + ' semitons)</span></span></li>' +
-      '<li><span class="deg">5.º</span><span class="desc mono">' + NOTES[fifth] + '&nbsp;<span style="opacity:.65">(' + (quality==='major'?'+3':'+4') + ' semitons)</span></span></li>';
+      '<li><span class="deg">1.º</span><span class="desc mono">' + NOTES[root] + '<br><span class="desc-sub">Define o acorde</span></span></li>' +
+      '<li><span class="deg">3.º</span><span class="desc mono">' + NOTES[third] + '<br><span class="desc-sub">' + (quality==='major'?'+4':'+3') + ' semitons</span></span></li>' +
+      '<li><span class="deg">5.º</span><span class="desc mono">' + NOTES[fifth] + '<br><span class="desc-sub">' + (quality==='major'?'+3':'+4') + ' semitons</span></span></li>';
+
+    if (forma === null) {
+      fretWrap.innerHTML = '';
+      return;
+    }
 
     renderFret(root, quality, third, fifth);
   }
@@ -931,8 +975,7 @@
         // só acontece para Ré# menor (o único root em que fBarrePireteMenor é 11) - o anelar
         // cairia na casa 13, além do fim do braço; em vez de forçar uma posição, mostra uma
         // mensagem no lugar do diagrama, por pedido explícito
-        fretWrap.innerHTML = '<p style="text-align:left;color:var(--ink-soft);font-size:1.0125rem;padding:20px 8px;">Não vamos falar dele agora 🤪</p>';
-        fretCaption.textContent = '';
+        fretWrap.innerHTML = '<p style="text-align:left;color:var(--ink-soft);font-size:1.0125rem;padding:20px 8px;">Esse não dá pra fazer hehehe 🤪</p>';
         return;
       }
       var dotsPireteMenor = [fBarrePireteMenor, fBarrePireteMenor, fBarrePireteMenor, fAnelarPireteMenor];
@@ -957,8 +1000,6 @@
     }
 
     fretWrap.innerHTML = svg;
-    var noteEscaped = note.replace(/&/g, '&amp;').replace(/"/g, '&quot;');
-    fretCaption.innerHTML = '<span class="tooltip" tabindex="0" data-tooltip="' + noteEscaped + '">' + caption + '</span>';
     playChordDots(chordDots);
   }
 
@@ -985,7 +1026,7 @@
 
     // string labels
     OPEN_NAMES.forEach(function(n, i){
-      parts.push('<text x="'+xs[i]+'" y="16" text-anchor="middle" font-size="11" fill="currentColor" opacity=".55" font-family="ui-monospace,monospace">'+n+'</text>');
+      parts.push('<text x="'+xs[i]+'" y="25" text-anchor="middle" font-size="11" fill="currentColor" opacity=".55" font-family="ui-monospace,monospace">'+n+'</text>');
     });
 
     // strings (vertical)
@@ -1057,6 +1098,20 @@
   });
 
   update();
+
+  function alignDegreeListToQuality(){
+    var info = degreeList.parentElement;
+    var infoRect = info.getBoundingClientRect();
+    var qMinorRect = qMinor.getBoundingClientRect();
+    var width = qMinorRect.right - infoRect.left;
+    if (qMinorRect.width === 0 || width <= 0) {
+      degreeList.style.width = '';
+      return;
+    }
+    degreeList.style.width = width + 'px';
+  }
+  window.addEventListener('resize', alignDegreeListToQuality);
+  alignDegreeListToQuality();
 
   // ---- diagramas de forma (sem casas/cordas) para os cartões de Barra/Escadinha/Pirete ----
   (function(){
